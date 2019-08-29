@@ -1,0 +1,77 @@
+<template>
+  <div>
+	  <search></search>
+    <div class="top"></div>
+		<swipe></swipe>
+    <div class="bg-e6">
+      <yuan></yuan>
+      <div class="jianianhua"></div>
+      <table6></table6>
+      <div class="miaosha"><img src="../../../img/sha.png" alt=""><span>今日秒杀</span></div>
+      <Tab></Tab>
+    </div>   
+  </div>
+</template>
+<script>
+import search from './search'
+import swipe from './swipe'
+import yuan from "./yuan"
+import table6 from "./table6"
+import Tab from "./Tab"
+export default {
+  data() {
+    return {};
+  },
+  components:{
+	  // 顶部搜索栏
+	  search:search,
+	  //轮播图组件
+    swipe:swipe,
+    // 圆
+    yuan:yuan,
+    // table66
+    table6:table6,
+    // tab
+    Tab:Tab
+  }
+};
+</script>
+<style scoped>
+.mint-tab-container{
+  overflow: visible !important;
+}
+.top{
+	width: 100%;
+	height: 160px;
+	background-color: #964B00;
+}
+.bg-e6{
+  background: #e6e6e6;
+  height: 9000px;
+}
+.jianianhua{
+  width: 90%;
+  margin:0 auto;
+  margin-top: 20px;
+  height: 60px;
+  border: 1px solid #8B0000;
+  border-radius: 30px;
+}
+.miaosha{
+  margin: 0 auto;
+  text-align: center;
+  width: 90%;
+  height: 46px;
+  background: #fff;
+  
+}
+.miaosha img{
+  padding-right:8px; 
+  padding-top: 15px;
+}
+.miaosha span{
+  margin: 0;
+  font-size: 16px;
+}
+
+</style>

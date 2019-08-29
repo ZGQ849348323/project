@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.box{
+display: flex;
+overflow-x: scroll;
+width: 100%;
+}
+.smallbox{
+width: 200px;
+}
+.box>div{
+    flex-shrink: 0;
+width: 200px;
+height: 50px;
+background: pink;
+margin-right: 10px;
+}
+</style>
+
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+    </div>
+</body>
+
+</html>
