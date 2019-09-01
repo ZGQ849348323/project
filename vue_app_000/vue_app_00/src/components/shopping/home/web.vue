@@ -9,6 +9,8 @@
       <table6></table6>
       <div class="miaosha"><img src="../../../img/sha.png" alt=""><span>今日秒杀</span></div>
       <Tab></Tab>
+      <div class="miaosha mt-10"><img src="../../../img/sha.png" alt=""><span>今日推荐</span></div>
+      <recommend></recommend>
     </div>   
   </div>
 </template>
@@ -18,6 +20,7 @@ import swipe from './swipe'
 import yuan from "./yuan"
 import table6 from "./table6"
 import Tab from "./Tab"
+import recommend from "./recommend"
 export default {
   data() {
     return {};
@@ -32,7 +35,9 @@ export default {
     // table66
     table6:table6,
     // tab
-    Tab:Tab
+    Tab:Tab,
+
+    recommend:recommend
   }
 };
 </script>
@@ -72,6 +77,9 @@ export default {
 .miaosha span{
   margin: 0;
   font-size: 16px;
+}
+.mt-10{
+  margin-top: 10px;
 }
 
 </style>

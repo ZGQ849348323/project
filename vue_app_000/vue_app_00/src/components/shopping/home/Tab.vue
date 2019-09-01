@@ -61,7 +61,9 @@ export default {
                 "飞利浦（PHILIPS）男士电动剃须刀全身水洗干湿双剃剃胡刀胡须刀刮胡刀S1050/02",
               price: "¥ 45",
               del: "¥ 58"
-            }
+            },
+          {img:require("../../../assets/listR5.jpg"),title:" 展艺 马苏里拉 450g （再制干酪 芝士碎 披萨拉丝奶酪 烘焙材料）",price:"¥ 29.9",del:"¥ 38"},
+
           ]
         },
         {
@@ -79,7 +81,9 @@ export default {
               title: "巴布豆婴儿浴巾连帽宝宝浴巾儿童洗澡巾 黄色 140*70cm",
               price: "¥ 45",
               del: "¥ 58"
-            }
+            },
+          {img:require("../../../assets/listR5.jpg"),title:" 展艺 马苏里拉 450g （再制干酪 芝士碎 披萨拉丝奶酪 烘焙材料）",price:"¥ 29.9",del:"¥ 38"},
+
           ]
         },
         {
@@ -87,6 +91,8 @@ export default {
           list:[
           {img:require("../../../assets/listR5.jpg"),title:" 展艺 马苏里拉 450g （再制干酪 芝士碎 披萨拉丝奶酪 烘焙材料）",price:"¥ 29.9",del:"¥ 38"},
            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            
         ],
         },
         {
@@ -94,6 +100,8 @@ export default {
           list:[
           {img:require("../../../assets/listR7.jpg"),title:"澳纽宝 多味披萨套餐 5盒装 约17厘米 成品披萨 含披萨刀",price:"¥ 29.9",del:"¥ 38"},
            {img:require("../../../assets/listR8.jpg"),title:"意大利L'ALPINA袋鼠 双肩包女真皮新款头层牛皮女包韩版休闲百搭背包女 黑色",price:"¥ 45",del:"¥ 58"},
+            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            
         ],
         },
         {
@@ -101,6 +109,8 @@ export default {
           list:[
           {img:require("../../../assets/listR5.jpg"),title:" 展艺 马苏里拉 450g （再制干酪 芝士碎 披萨拉丝奶酪 烘焙材料）",price:"¥ 29.9",del:"¥ 38"},
            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            
         ],
         },
         {
@@ -108,6 +118,8 @@ export default {
           list:[
            {img:require("../../../assets/listR7.jpg"),title:"澳纽宝 多味披萨套餐 5盒装 约17厘米 成品披萨 含披萨刀",price:"¥ 29.9",del:"¥ 38"},
            {img:require("../../../assets/listR8.jpg"),title:"意大利L'ALPINA袋鼠 双肩包女真皮新款头层牛皮女包韩版休闲百搭背包女 黑色",price:"¥ 45",del:"¥ 58"},
+            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            
         ],
         },
         {
@@ -115,6 +127,8 @@ export default {
           list:[
           {img:require("../../../assets/list3.jpg"),title:"金稻发帽敢于冒干发巾金号毛巾家纺 提缎纯棉条纹款浴帽 吸水干发帽 蓝色 100g",price:"¥ 29.9",del:"¥ 38"},
            {img:require("../../../assets/listR4.jpg"),title:"巴布豆婴儿浴巾连帽宝宝浴巾儿童洗澡巾 黄色 140*70cm",price:"¥ 45",del:"¥ 58"},
+            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            
         ],
         },
         {
@@ -122,6 +136,8 @@ export default {
           list:[
            {img:require("../../../assets/listR5.jpg"),title:" 展艺 马苏里拉 450g （再制干酪 芝士碎 披萨拉丝奶酪 烘焙材料）",price:"¥ 29.9",del:"¥ 38"},
            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            
         ],
         },
         {
@@ -129,6 +145,8 @@ export default {
           list:[
           {img:require("../../../assets/listR7.jpg"),title:"澳纽宝 多味披萨套餐 5盒装 约17厘米 成品披萨 含披萨刀",price:"¥ 29.9",del:"¥ 38"},
            {img:require("../../../assets/listR8.jpg"),title:"意大利L'ALPINA袋鼠 双肩包女真皮新款头层牛皮女包韩版休闲百搭背包女 黑色",price:"¥ 45",del:"¥ 58"},
+            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            
         ],
         },
         {
@@ -136,6 +154,8 @@ export default {
           list:[
           {img:require("../../../assets/listR5.jpg"),title:" 展艺 马苏里拉 450g （再制干酪 芝士碎 披萨拉丝奶酪 烘焙材料）",price:"¥ 29.9",del:"¥ 38"},
            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            {img:require("../../../assets/listR6.jpg"),title:" 俏侬 手抓饼 原味 1000g 10片装（2件起售）烘焙食材",price:"¥ 45",del:"¥ 58"},
+            
         ],
         },
 

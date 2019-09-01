@@ -8,6 +8,7 @@ import HelloContainer from "./components/HelloWorld.vue"
 import index from "./components/shopping/index.vue"
 import web from "./components/shopping/home/web.vue"
 import Tab from "./components/shopping/home/Tab.vue"
+import Tab2 from "./components/shopping/home/Tab2.vue"
 
 
 Vue.use(Router)
@@ -19,5 +20,6 @@ export default new Router({
     {path:"/index",component:index},
     {path:"/web",component:web},
     {path:"/Tab",component:Tab},
+    {path:"/Tab2",component:Tab2},
   ]
 })
