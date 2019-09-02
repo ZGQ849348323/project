@@ -7,6 +7,7 @@
         :data-index="i"
         @click="isActive(i)"
         :class="item.isshow?'destTab-li active':'destTab-li'"
+        
       >
         <h6>{{item.tet}}</h6>
         <span>{{item.p1}}</span>
@@ -33,6 +34,7 @@
 export default {
   data() {
     return {
+      
       indexList: [
         { tet: "昨日15:00", p1: "昨日精选", isshow: true },
         { tet: "昨日20:00", p1: "昨日精选", isshow: false },

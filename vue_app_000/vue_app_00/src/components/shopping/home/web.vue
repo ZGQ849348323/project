@@ -11,6 +11,9 @@
       <Tab></Tab>
       <div class="miaosha mt-10"><img src="../../../img/sha.png" alt=""><span>今日推荐</span></div>
       <recommend></recommend>
+      <Tab2></Tab2>
+      <div class="miaosha mt-10"><img src="../../../img/sha.png" alt=""><span>为你推荐</span></div>
+      <list></list>
     </div>   
   </div>
 </template>
@@ -21,6 +24,8 @@ import yuan from "./yuan"
 import table6 from "./table6"
 import Tab from "./Tab"
 import recommend from "./recommend"
+import Tab2 from "./Tab2"
+import list from "./list"
 export default {
   data() {
     return {};
@@ -36,8 +41,9 @@ export default {
     table6:table6,
     // tab
     Tab:Tab,
-
-    recommend:recommend
+    recommend:recommend,
+    Tab2:Tab2,
+    list:list
   }
 };
 </script>
@@ -52,7 +58,7 @@ export default {
 }
 .bg-e6{
   background: #e6e6e6;
-  height: 9000px;
+  height: 100%;
 }
 .jianianhua{
   width: 90%;

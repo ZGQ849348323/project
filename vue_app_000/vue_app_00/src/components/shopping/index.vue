@@ -3,10 +3,10 @@
     <!-- 4个面板 -->
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="home">
-        <web></web>
+        <web style="margin-bottom:57px;"></web>
       </mt-tab-container-item>
       <mt-tab-container-item id="list">
-        <span>123</span>
+        <TreeSelect></TreeSelect>
       </mt-tab-container-item>
       <mt-tab-container-item id="bag">
         <span>22</span>
@@ -52,11 +52,12 @@
 <script>
 import TabBarIcon from "./home/TabBarIcon";
 import web from "../shopping/home/web";
+import TreeSelect from "./list/TreeSelect"
 export default {
   data() {
     return {
       //面板中显示子组件id
-      selected: "home",
+      selected: "list",
       currentIndex: [
         { isSelect: true },
         { isSelect: false },
@@ -87,6 +88,8 @@ export default {
     tabbaricon: TabBarIcon,
     // 页面组件
     web: web,
+    // 列表页面组件
+    TreeSelect,TreeSelect,
   }
 };
 </script>

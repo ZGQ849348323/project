@@ -7,8 +7,7 @@ import HelloContainer from "./components/HelloWorld.vue"
 // 自己做的项目
 import index from "./components/shopping/index.vue"
 import web from "./components/shopping/home/web.vue"
-import Tab from "./components/shopping/home/Tab.vue"
-import Tab2 from "./components/shopping/home/Tab2.vue"
+import TreeSelect from "./components/shopping/list/TreeSelect.vue"
 
 
 Vue.use(Router)
@@ -19,7 +18,6 @@ export default new Router({
     // 自己的项目
     {path:"/index",component:index},
     {path:"/web",component:web},
-    {path:"/Tab",component:Tab},
-    {path:"/Tab2",component:Tab2},
+    {path:"/TreeSelect",component:TreeSelect}
   ]
 })
