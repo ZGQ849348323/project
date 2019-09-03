@@ -6,7 +6,7 @@
         :key="i"
         :data-index="i"
         @click="isActive(i)"
-        :class="item.isshow?'destTab-li active':'destTab-li'"
+        :class="item.isshow?'destTab active':'destTab'"
         
       >
         <h6>{{item.tet}}</h6>
@@ -44,7 +44,7 @@ export default {
         { tet: "20:00", p1: "即将开抢", isshow: false },
         { tet: "22:00", p1: "即将开抢", isshow: false },
         { tet: "明日10:00", p1: "即将开抢", isshow: false },
-        { tet: "明日25:00", p1: "即将开抢", isshow: false },
+        { tet: "明日15:00", p1: "即将开抢", isshow: false },
         { tet: "明日20:00", p1: "即将开抢", isshow: false }
       ],
       lists: [
@@ -187,12 +187,12 @@ export default {
 </script>
 <style scoped>
 .list > div {
-  width: 85%;
+  width: 90%;
   height: 110px;
   margin: 0 auto;
   background: #fff;
   display: flex;
-  padding: 10px;
+  /* padding: 10px; */
   position: relative;
 }
 .list img {
@@ -273,7 +273,7 @@ span {
   background-color: #f00;
   color: #fff !important;
 }
-.destTab-li {
+.destTab {
   float: left;
   /* display: inline-block; */
   font-size: 0.4rem;

@@ -87,5 +87,12 @@ export default {
 .mt-10{
   margin-top: 10px;
 }
-
+.van-search {
+	width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #e6e6e6 !important;
+  z-index: 9999;
+  opacity: 0.9;
+}
 </style>

@@ -9,7 +9,7 @@
         <TreeSelect></TreeSelect>
       </mt-tab-container-item>
       <mt-tab-container-item id="bag">
-        <span>22</span>
+        <bag></bag>
       </mt-tab-container-item>
       <mt-tab-container-item id="my">
         <span>44</span>
@@ -53,11 +53,12 @@
 import TabBarIcon from "./home/TabBarIcon";
 import web from "../shopping/home/web";
 import TreeSelect from "./list/TreeSelect"
+import bag from "./bag/bag"
 export default {
   data() {
     return {
       //面板中显示子组件id
-      selected: "list",
+      selected: "home",
       currentIndex: [
         { isSelect: true },
         { isSelect: false },
@@ -90,6 +91,8 @@ export default {
     web: web,
     // 列表页面组件
     TreeSelect,TreeSelect,
+    // 购物袋组件
+    bag:bag
   }
 };
 </script>

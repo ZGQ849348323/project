@@ -50,17 +50,17 @@ export default {
 .messages{
 	color: #000;
 	margin-bottom: 4px;
-	padding-left: 10px;
+	padding-left: 35px;
 }
 .p1{
 	color: #A9A9A9;
 	margin: 0px;
-	padding-left: 10px;
+	padding-left: 35px;
 	font-size: 10px;
 }
 #imgs{
-	width: 100px;
-    height: 67px;
-	padding-left: 20px;
+	width: 55%;
+    height: 55%;
+	padding-left: 30px;
 }
 </style>
