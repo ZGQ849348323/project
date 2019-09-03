@@ -15,7 +15,7 @@ var pool = mysql.createPool({
    user:"root",       //数据库用户名
    password:"",       //数据库密码
    port:3306,         //数据库端口
-   database:"team",     //数据库名称
+   database:"shopping",     //数据库名称
    connectionLimit:15 //连接数量
 });
 
@@ -117,4 +117,17 @@ server.get("/moe",(req,res)=>{
   })
 })
 
-
+server.get("/list",(req,res)=>{
+  console.log(req.query.id)
+  var sql = "select * from list";
+  pool.query(sql,(err,result)=>{
+    
+    if (err) throw err;
+    if(result.length>0){
+      res.send({code:1,msg:"发送成功",result})
+      return;
+    }
+    res.send({code:-1,msg:"发送失败"})
+    
+  })
+})

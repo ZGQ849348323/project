@@ -286,7 +286,20 @@ export default {
           this.listR[i].bol = true;
         }
       }
-    }
+    },
+    loaData(){
+			var id = 3;
+			this.axios
+			.get("list",{params:{id:id}})
+			.then(res=>{
+				console.log(res);
+				var arr = res.data.result;
+				this.list = arr;
+			})
+		}
+  },
+  created() {
+    this.loaData();
   },
   components: {
     // 顶部搜索栏
