@@ -117,9 +117,49 @@ server.get("/moe",(req,res)=>{
   })
 })
 
-server.get("/list",(req,res)=>{
-  console.log(req.query.id)
-  var sql = "select * from list";
+server.get("/clothing",(req,res)=>{
+  var sql = "select * from clothing";
+  pool.query(sql,(err,result)=>{
+    
+    if (err) throw err;
+    if(result.length>0){
+      res.send({code:1,msg:"发送成功",result})
+      return;
+    }
+    res.send({code:-1,msg:"发送失败"})
+    
+  })
+})
+
+
+server.get("/mask",(req,res)=>{
+  var sql = "select * from mask";
+  pool.query(sql,(err,result)=>{
+    
+    if (err) throw err;
+    if(result.length>0){
+      res.send({code:1,msg:"发送成功",result})
+      return;
+    }
+    res.send({code:-1,msg:"发送失败"})
+    
+  })
+})
+server.get("/shoe",(req,res)=>{
+  var sql = "select * from shoe";
+  pool.query(sql,(err,result)=>{
+    
+    if (err) throw err;
+    if(result.length>0){
+      res.send({code:1,msg:"发送成功",result})
+      return;
+    }
+    res.send({code:-1,msg:"发送失败"})
+    
+  })
+})
+server.get("/bag",(req,res)=>{
+  var sql = "select * from bag";
   pool.query(sql,(err,result)=>{
     
     if (err) throw err;

@@ -1,84 +1,116 @@
 <template>
-	<div>
-		<div class="bigBox">
-			<div class="smallBox" v-for="(item,i) of list" :key="i">
-				<img :src="item.imgS" alt="">
-				<span class="title">{{item.title}}</span>
-				<div>
-					<span>{{item.price}}</span>
-					<p>{{item.p}}</p>
-				</div>
-			</div>			
-		</div>	
-	</div>
+  <div>
+    <div class="bigBox">
+      <div class="smallBox" v-for="(item,i) of list" :key="i">
+        <img :src="'http://127.0.0.1:3000'+item.img1" alt />
+        <span class="title">{{item.title}}</span>
+        <div>
+          <span>¥{{item.price}}</span>
+          <p>赚{{item.p1}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-	data() {
-		return {
-			list:[
-				{imgS:require("../../../assets/list1.jpg"),title:"完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",price:"¥58.8",p:"赚3.24"},
-				{imgS:require("../../../assets/list1.jpg"),title:"完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",price:"¥58.8",p:"赚3.24"},
-				{imgS:require("../../../assets/list1.jpg"),title:"完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",price:"¥58.8",p:"赚3.24"},
-				{imgS:require("../../../assets/list1.jpg"),title:"完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",price:"¥58.8",p:"赚3.24"},
-				{imgS:require("../../../assets/list1.jpg"),title:"完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",price:"¥58.8",p:"赚3.24"},
-				{imgS:require("../../../assets/list1.jpg"),title:"完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",price:"¥58.8",p:"赚3.24"},
-				{imgS:require("../../../assets/list1.jpg"),title:"完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",price:"¥58.8",p:"赚3.24"},
-				{imgS:require("../../../assets/list1.jpg"),title:"完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",price:"¥58.8",p:"赚3.24"},
-			]						
-		}
+  data() {
+    return {
+      list: "",
+    };
+  },
+  methods: {
+    shoe() {
+      this.axios
+        .get("clothing")
+        .then(res => {
+          var arr = res.data.result;
+          this.list = arr;
+            // console.log(this.list);
+        });
+    //   this.axios
+    //     // .get("list",{params:{id:id}})
+    //     .get("shoe")
+    //     .then(res => {
+    //       var arr = res.data.result;
+    //       for (var i = 0; i < arr.length; i++) {
+    //         this.list.push(arr[i]);
+    //       }
+    //     });
+    //   this.axios
+    //     // .get("list",{params:{id:id}})
+    //     .get("mask")
+    //     .then(res => {
+    //       var arr = res.data.result;
+    //       for (var i = 0; i < arr.length; i++) {
+    //         this.list.push(arr[i]);
+    //       }
+    //     });
+    //   this.axios
+    //     // .get("list",{params:{id:id}})
+    //     .get("bag")
+    //     .then(res => {
+    //       var arr = res.data.result;
+    //       for (var i = 0; i < arr.length; i++) {
+	// 		this.list.push(arr[i]);
+	// 		// console.log(this.list)
+    //       }
+    //     });
+    }
+  },
 
-	},
-}
+  created() {
+    this.shoe();
+  }
+};
 </script>
 <style scoped>
-*{
-	margin: 0;
-	padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-.bigBox{
-	width: 90%;
-	margin: 0 auto;
-	display :flex;
-	flex-wrap:wrap;
-	justify-content: space-between;
-	/* flex-direction: column; */
+.bigBox {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* flex-direction: column; */
 }
-.smallBox{
-	width:49%;
-	height: 200px;
-	background-color:#fff;
-	margin-top: 5px;
+.smallBox {
+  width: 49%;
+  height: 200px;
+  background-color: #fff;
+  margin-top: 5px;
 }
-.smallBox>img{
-	width:100%;
-	height: 150px;
+.smallBox > img {
+  width: 100%;
+  height: 150px;
 }
-.title{
-	height: 14px;
-	width: 100%;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	display:-webkit-box;
-	/*控制在3行*/
-	-webkit-line-clamp:1;
-	-webkit-box-orient:vertical;
-	margin: 0;
-	font-size: 1px;
-
+.title {
+  height: 14px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /*控制在3行*/
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  margin: 0;
+  font-size: 1px;
 }
-.smallBox>div{
-	display: flex;
-	margin-top: 6px;
-	padding: 0 5px;
+.smallBox > div {
+  display: flex;
+  margin-top: 6px;
+  padding: 0 5px;
 }
-.smallBox>div>span{
-	font-size: 14px;
+.smallBox > div > span {
+  font-size: 14px;
 }
-.smallBox>div>p{
-	font-size: 6px !important;
-	color: #f00;
-	margin-left: 5px;
-	padding-top: 2px;
+.smallBox > div > p {
+  font-size: 6px !important;
+  color: #f00;
+  margin-left: 5px;
+  padding-top: 2px;
 }
 </style>

@@ -1,20 +1,20 @@
 <template>
   <div>
     <mt-header fixed title="分类" style="background:#fff;color:#000;" id="top"></mt-header>
-    <search></search>
+    <search id="aa"></search>
     <div id="bigBox" :style="{height:(screenHeight-152)+'px'}">
       <ul class="left">
         <li v-for="(item,i) of listL" :key="i" :data-index="i" @click="isActive(i)" :class="item.isshow?'destTab active':'destTab'">{{item.txt}}</li>
       </ul>
-      <ul class="right" v-show="listR[n].bol" v-for="(item,n) of listR" :key="n">
-        <li v-for="(elem,i) of item.list" :key="i">
+      <ul class="right" v-show="lists[n].bol" v-for="(item,n) of lists" :key="n">
+        <li v-for="(elem,i) of item.list" :key="i" @click="aa">
           <table></table>
           <div class="a">
-            <img :src="elem.img" alt="">
+            <img :src="'http://127.0.0.1:3000'+elem.imgurl" alt="">
             <div>
               <span class="title">{{elem.title}}</span>
-              <span class="price">{{elem.price}}</span>
-              <p>{{elem.p}}</p>
+              <span class="price">¥{{elem.price}}</span>
+              <p>赚{{elem.p1}}</p>
             </div>
           </div>
         </li>       
@@ -28,6 +28,20 @@ export default {
   data() {
     return {
       value: "",
+      lists:[
+        {bol:true,list:""},
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""}, 
+        {bol:false,list:""},         
+      ],
       screenHeight: document.documentElement.clientHeight, // 屏幕高度
       listL: [
         { txt: "购虎国际", isshow: true },
@@ -43,233 +57,6 @@ export default {
         { txt: "汽车用品", isshow: false },
         { txt: "奢饰品/...", isshow: false }
       ],
-      listR: [
-        {
-          bol: true,
-          list: [
-            {
-              img: require("../../../assets/milk.jpg"),
-              title:
-                "【乐荷】荷兰进口有机纯牛奶 儿童成长牛奶 学生营养早餐200*24盒",
-              price: "¥160",
-              p: "赚4.5"
-            },
-            {
-              img: require("../../../assets/milk2.jpg"),
-              title:
-                "荷兰乳牛全进口牛奶整箱早餐脱脂牛奶网红抖音草莓纯牛奶香蕉24盒",
-              price: "¥64",
-              p: "赚4.5"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/kou1.jpg"),
-              title:
-                "【乐荷】荷兰进口有机纯牛奶 儿童成长牛奶 学生营养早餐200*24盒",
-              price: "¥160",
-              p: "赚4.5"
-            },
-            {
-              img: require("../../../assets/list1.jpg"),
-              title:
-                "完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",
-              price: "¥58.8",
-              p: "赚3.24"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/kou1.jpg"),
-              title:
-                "迪奥999Dior口红唇膏烈艳蓝金 哑光滋润520/888/999送礼礼品套装 520+999滋润",
-              price: "¥59",
-              p: "赚2.58"
-            },
-            {
-              img: require("../../../assets/kou2.jpg"),
-              title: "圣罗兰（YSL）纯口红1#（正红色）3.8g",
-              price: "¥49",
-              p: "赚2.28"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/milk.jpg"),
-              title:
-                "【乐荷】荷兰进口有机纯牛奶 儿童成长牛奶 学生营养早餐200*24盒",
-              price: "¥160",
-              p: "赚4.5"
-            },
-            {
-              img: require("../../../assets/milk2.jpg"),
-              title:
-                "荷兰乳牛全进口牛奶整箱早餐脱脂牛奶网红抖音草莓纯牛奶香蕉24盒",
-              price: "¥64",
-              p: "赚4.5"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/kou1.jpg"),
-              title:
-                "【乐荷】荷兰进口有机纯牛奶 儿童成长牛奶 学生营养早餐200*24盒",
-              price: "¥160",
-              p: "赚4.5"
-            },
-            {
-              img: require("../../../assets/list1.jpg"),
-              title:
-                "完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",
-              price: "¥58.8",
-              p: "赚3.24"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/kou1.jpg"),
-              title:
-                "迪奥999Dior口红唇膏烈艳蓝金 哑光滋润520/888/999送礼礼品套装 520+999滋润",
-              price: "¥59",
-              p: "赚2.58"
-            },
-            {
-              img: require("../../../assets/kou2.jpg"),
-              title: "圣罗兰（YSL）纯口红1#（正红色）3.8g",
-              price: "¥49",
-              p: "赚2.28"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/milk.jpg"),
-              title:
-                "【乐荷】荷兰进口有机纯牛奶 儿童成长牛奶 学生营养早餐200*24盒",
-              price: "¥160",
-              p: "赚4.5"
-            },
-            {
-              img: require("../../../assets/milk2.jpg"),
-              title:
-                "荷兰乳牛全进口牛奶整箱早餐脱脂牛奶网红抖音草莓纯牛奶香蕉24盒",
-              price: "¥64",
-              p: "赚4.5"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/kou1.jpg"),
-              title:
-                "【乐荷】荷兰进口有机纯牛奶 儿童成长牛奶 学生营养早餐200*24盒",
-              price: "¥160",
-              p: "赚4.5"
-            },
-            {
-              img: require("../../../assets/list1.jpg"),
-              title:
-                "完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",
-              price: "¥58.8",
-              p: "赚3.24"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/kou1.jpg"),
-              title:
-                "迪奥999Dior口红唇膏烈艳蓝金 哑光滋润520/888/999送礼礼品套装 520+999滋润",
-              price: "¥59",
-              p: "赚2.58"
-            },
-            {
-              img: require("../../../assets/kou2.jpg"),
-              title: "圣罗兰（YSL）纯口红1#（正红色）3.8g",
-              price: "¥49",
-              p: "赚2.28"
-            }
-          ]
-        },
-
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/milk.jpg"),
-              title:
-                "【乐荷】荷兰进口有机纯牛奶 儿童成长牛奶 学生营养早餐200*24盒",
-              price: "¥160",
-              p: "赚4.5"
-            },
-            {
-              img: require("../../../assets/milk2.jpg"),
-              title:
-                "荷兰乳牛全进口牛奶整箱早餐脱脂牛奶网红抖音草莓纯牛奶香蕉24盒",
-              price: "¥64",
-              p: "赚4.5"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/kou1.jpg"),
-              title:
-                "【乐荷】荷兰进口有机纯牛奶 儿童成长牛奶 学生营养早餐200*24盒",
-              price: "¥160",
-              p: "赚4.5"
-            },
-            {
-              img: require("../../../assets/list1.jpg"),
-              title:
-                "完美芦荟胶40g*3支装（乳液面霜 补水保湿 温和不刺激 祛痘淡印）",
-              price: "¥58.8",
-              p: "赚3.24"
-            }
-          ]
-        },
-        {
-          bol: false,
-          list: [
-            {
-              img: require("../../../assets/kou1.jpg"),
-              title:
-                "迪奥999Dior口红唇膏烈艳蓝金 哑光滋润520/888/999送礼礼品套装 520+999滋润",
-              price: "¥59",
-              p: "赚2.58"
-            },
-            {
-              img: require("../../../assets/kou2.jpg"),
-              title: "圣罗兰（YSL）纯口红1#（正红色）3.8g",
-              price: "¥49",
-              p: "赚2.28"
-            }
-          ]
-        }
-      ]
     };
   },
   methods: {
@@ -280,26 +67,66 @@ export default {
       let dom=i;
      for (var i = 0; i < this.listL.length; i++) {
         this.listL[i].isshow = false;
-        this.listR[i].bol = false;
+        this.lists[i].bol = false;
         if (dom == i) {
           this.listL[i].isshow = true;
-          this.listR[i].bol = true;
+          this.lists[i].bol = true;
         }
       }
     },
-    loaData(){
-			var id = 3;
+    clothing(){
+			// var id = 3;
 			this.axios
-			.get("list",{params:{id:id}})
+      // .get("list",{params:{id:id}})
+      .get("clothing")
 			.then(res=>{
-				console.log(res);
-				var arr = res.data.result;
-				this.list = arr;
+        for(var i=0;i<this.lists.length;i++){          
+          var arr = res.data.result;
+          this.lists[0].list= arr;
+          this.lists[4].list= arr;
+          this.lists[8].list= arr;
+        }
 			})
-		}
+    },
+    mask(){
+      this.axios.get("mask").then(res=>{
+        for(var i=0;i<this.lists.length;i++){         
+          var arr=res.data.result;
+          this.lists[1].list=arr;
+          this.lists[5].list= arr;
+          this.lists[9].list= arr;
+        }
+      })
+    },
+    shoe(){
+       this.axios.get("shoe").then(res=>{
+         for(var i=0;i<this.lists.length;i++){          
+           var arr=res.data.result;
+           this.lists[2].list=arr;
+           this.lists[6].list= arr;
+           this.lists[10].list= arr;
+        }
+      })
+    },
+    bag(){
+      this.axios.get("bag").then(res=>{
+        for(var i=0;i<this.lists.length;i++){          
+          var arr=res.data.result;
+          this.lists[3].list=arr;
+          this.lists[7].list= arr;
+          this.lists[11].list= arr;
+        }
+      })
+    },
+    aa(){
+      this.$router.push("/details")
+    }
   },
   created() {
-    this.loaData();
+    this.clothing();
+    this.mask();
+    this.shoe();
+    this.bag();
   },
   components: {
     // 顶部搜索栏
@@ -311,7 +138,14 @@ export default {
 *{
   box-sizing: border-box;
 }
-
+#aa {
+	width: 100%;
+  position: fixed;
+  top: 40px;
+  background-color: #e6e6e6 !important;
+  z-index: 9999;
+  opacity: 0.9;
+}
 #bigBox {
   width: 100%;
   display: flex;

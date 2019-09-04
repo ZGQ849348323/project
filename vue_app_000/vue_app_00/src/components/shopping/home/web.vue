@@ -95,4 +95,5 @@ export default {
   z-index: 9999;
   opacity: 0.9;
 }
+
 </style>
