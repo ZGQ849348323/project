@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="bigBox">
-      <div class="smallBox" v-for="(item,i) of list" :key="i">
+      <div class="smallBox" v-for="(item,i) of list" :key="i" @click="jumpde(item.id)">
         <img :src="'http://127.0.0.1:3000'+item.img1" alt />
         <span class="title">{{item.title}}</span>
         <div>
@@ -26,7 +26,7 @@ export default {
         .then(res => {
           var arr = res.data.result;
           this.list = arr;
-            // console.log(this.list);
+            console.log(this.list);
         });
     //   this.axios
     //     // .get("list",{params:{id:id}})
@@ -56,6 +56,10 @@ export default {
 	// 		// console.log(this.list)
     //       }
     //     });
+    },
+    jumpde(did){
+      // console.log(did)
+      this.$router.push("/details/"+did);
     }
   },
 

@@ -20,6 +20,6 @@ export default new Router({
     {path:"/index",component:index},
     {path:"/web",component:web},
     {path:"/TreeSelect",component:TreeSelect},
-    {path:"/details",component:details,props:true}
+    {path:"/details/:did",component:details,props:true}
   ]
 })

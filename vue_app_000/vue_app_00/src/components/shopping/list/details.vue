@@ -44,8 +44,19 @@ export default {
     },
     onClickRight() {
       console.log(1);
-    }
-  }
+	},
+	loadAjax(deid){
+		console.log(deid)
+	}
+  },
+  mounted() {
+	  let deid = this.$route.params.did;
+	  this.loadAjax(deid)
+	  
+  },
+//   created() {
+// 	  console.log(this.$route.params.did);
+//   }
 };
 </script>
 <style scoped>

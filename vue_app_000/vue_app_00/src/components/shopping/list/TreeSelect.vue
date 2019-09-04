@@ -120,13 +120,15 @@ export default {
     },
     aa(){
       this.$router.push("/details")
-    }
+    },
   },
   created() {
     this.clothing();
     this.mask();
     this.shoe();
     this.bag();
+    console.log( this.lists)
+ 
   },
   components: {
     // 顶部搜索栏
