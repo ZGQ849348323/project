@@ -8,96 +8,103 @@
       @click-left="onClickLeft"
       @click-right="onClickRight"
     />
-    <van-swipe :autoplay="3000000" indicator-color="#f00" >
-      <van-swipe-item>
-        <img src="../../../assets/swipe/clothing_1.jpg" alt />
-      </van-swipe-item>
-      <van-swipe-item>
-        <img src="../../../assets/swipe/clothing_2.jpg" alt />
-      </van-swipe-item>
-      <van-swipe-item>
-        <img src="../../../assets/swipe/clothing_3.jpg" alt />
-      </van-swipe-item>
-    </van-swipe>
-	<div class="box">
-		<table></table>
-		<p class="title">秋装日系复古水洗浅色牛仔外套男潮流宽松牛仔翻领夹克青年牛仔衣</p>
-		<p class="price">¥127</p>
-		<p class="p1">赚3.6</p>
-		<div class="shark">
-			<img src="../../../assets/share.png" alt=""><br>
-			<span style="margin:0">分享</span>
-		</div>
-	</div>
-	
+    <div v-for="(item,i) of list" :key="i">
+      <van-swipe :autoplay="3000" indicator-color="#f00">
+        <van-swipe-item>
+          <img :src="'http://127.0.0.1:3000'+item.img1" alt />
+        </van-swipe-item>
+        <van-swipe-item>
+          <img :src="'http://127.0.0.1:3000'+item.img2" alt />
+        </van-swipe-item>
+        <van-swipe-item>
+          <img :src="'http://127.0.0.1:3000'+item.img3" alt />
+        </van-swipe-item>
+      </van-swipe>
+      <div class="box">
+        <table></table>
+        <p class="title">{{item.title}}</p>
+        <p class="price">¥{{item.price}}</p>
+        <p class="p1">赚{{item.p1}}</p>
+        <div class="shark">
+          <img src="../../../assets/share.png" alt />
+          <br />
+          <span style="margin:0">分享</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
-    return {};
+    return {
+      list: ""
+    };
   },
   props: ["id"],
   methods: {
     onClickLeft() {
-      this.$router.push("/TreeSelect");
+      this.$router.push("/index");
     },
     onClickRight() {
       console.log(1);
-	},
-	loadAjax(deid){
-		console.log(deid)
-	}
+    },
+    loadAjax(deid) {
+      // let deid = this.$route.params.did;
+      // console.log(deid)
+      this.axios.get("details", { params: { id: deid } }).then(res => {
+        var arr = res.data.result;
+          this.list = arr;
+      });
+    }
   },
   mounted() {
-	  let deid = this.$route.params.did;
-	  this.loadAjax(deid)
-	  
-  },
-//   created() {
-// 	  console.log(this.$route.params.did);
-//   }
+    let deid = this.$route.params.did;
+    this.loadAjax(deid);
+  }
 };
 </script>
 <style scoped>
-body{
-	background: #e6e6e6;
+body {
+  background: #e6e6e6;
 }
-.van-swipe{
-	width:100%;
-	height: 220px;
-	margin:0 auto;
+.van-swipe {
+  width: 100%;
+  height: 220px;
+  margin: 0 auto;
 }
-.van-swipe-item>img{
-	height: 100%;
-	width: 100%;
+.van-swipe-item > img {
+  height: 100%;
+  width: 100%;
 }
-.box{
-	height: 90px;
-	background-color:#fff;
-	margin-bottom: 5px; 
-	position: relative;
-	padding-left: 10px;
+.box {
+  height: 90px;
+  background-color: #fff;
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 10px;
 }
-.title{
-	margin:10px 0;
-	margin-bottom: 15px;
-	font-size: 15px;
-	padding-right: 32%;
+.title {
+  margin: 10px 0;
+  margin-bottom: 15px;
+  font-size: 15px;
+  padding-right: 32%;
 }
-.price{
-	margin:0;
-	color:#000;
-	display: inline-block;
+.price {
+  margin: 0;
+  color: #000;
+  display: inline-block;
+  padding-right: 10px;
 }
-.p1{
-	margin:0;
-	color:#f00;
-	display: inline-block;
+.p1 {
+  margin: 0;
+  color: #f00;
+  font-size: 8px;
+  display: inline-block;
 }
-.shark{
-	position: absolute;
-	top: 20px;
-	right: 20px;
+.shark {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 </style>

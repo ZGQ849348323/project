@@ -171,3 +171,35 @@ server.get("/bag",(req,res)=>{
     
   })
 })
+
+server.get("/list",(req,res)=>{
+  var sql = "select * from list";
+  pool.query(sql,(err,result)=>{
+    
+    if (err) throw err;
+    if(result.length>0){
+      res.send({code:1,msg:"发送成功",result})
+      return;
+    }
+    res.send({code:-1,msg:"发送失败"})
+    
+  })
+})
+
+//接受详情页参数
+server.get("/details",(req,res)=>{
+  var lid=req.query.id;
+  console.log(lid)
+  var sql="select * from clothing where id=?";
+  // select * from clothing where id=1;
+  pool.query(sql,lid,(err,result)=>{
+    
+    if (err) throw err;
+    if(result.length>0){
+      res.send({code:1,msg:"发送成功",result})
+      return;
+    }
+    res.send({code:-1,msg:"发送失败"})
+    
+  })
+})

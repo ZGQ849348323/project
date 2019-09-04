@@ -127,7 +127,6 @@ export default {
     this.mask();
     this.shoe();
     this.bag();
-    console.log( this.lists)
  
   },
   components: {

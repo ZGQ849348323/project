@@ -63,3 +63,21 @@ INSERT INTO bag VALUES
 (null,109,2.58,'mracehomme日本小背包潮时尚大学生ins超火旅游双肩包女韩版书包',58,'/img/bag4.jpg');
 
 
+CREATE TABLE list(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    price float(10),
+    p1 float(10),
+    title VARCHAR(50),
+    discount INT,
+    imgurl VARCHAR(50),
+    img1 VARCHAR(50),
+    img2 VARCHAR(50),
+    img3 VARCHAR(50)
+);
+
+INSERT INTO list VALUES 
+(null,138,2.38,'秋装日系复古水洗浅色牛仔外套男潮流宽松牛仔翻领夹克青年牛仔衣',68,'/img/clothing.jpg','/img/clothing_1.jpg','/img/clothing_2.jpg','/img/clothing_3.jpg'),
+(null,88,2.88,'夏季日系复古拼色插肩袖休闲短袖衫新款学生情侣宽松圆领T恤男潮',48,'/img/clothing1.jpg','/img/clothing1_1.jpg','/img/clothing1_2.jpg','/img/clothing1_3.jpg'),
+(null,195,8.1,'男装秋季加厚套头麻花毛衣男宽松慵懒风日系休闲粗毛线针织衫男潮',65,'/img/clothing2.jpg','/img/clothing2_1.jpg','/img/clothing2_2.jpg','/img/clothing2_3.jpg'),
+(null,124.50,2.88,'男裤夏季薄款裤子男休闲九分裤男宽松直筒休闲裤男潮流百搭锥形裤',78,'/img/clothing3.jpg','/img/clothing3_1.jpg','/img/clothing3_2.jpg','/img/clothing3_3.jpg'),
+(null,158,2.98,'秋装基础款休闲字母印花连帽卫衣男日系潮流学生宽松外套情侣卫衣',88,'/img/clothing4.jpg','/img/clothing4_1.jpg','/img/clothing4_2.jpg','/img/clothing4_3.jpg');

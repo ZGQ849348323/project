@@ -22,40 +22,11 @@ export default {
   methods: {
     shoe() {
       this.axios
-        .get("clothing")
+        .get("list")
         .then(res => {
           var arr = res.data.result;
           this.list = arr;
-            console.log(this.list);
         });
-    //   this.axios
-    //     // .get("list",{params:{id:id}})
-    //     .get("shoe")
-    //     .then(res => {
-    //       var arr = res.data.result;
-    //       for (var i = 0; i < arr.length; i++) {
-    //         this.list.push(arr[i]);
-    //       }
-    //     });
-    //   this.axios
-    //     // .get("list",{params:{id:id}})
-    //     .get("mask")
-    //     .then(res => {
-    //       var arr = res.data.result;
-    //       for (var i = 0; i < arr.length; i++) {
-    //         this.list.push(arr[i]);
-    //       }
-    //     });
-    //   this.axios
-    //     // .get("list",{params:{id:id}})
-    //     .get("bag")
-    //     .then(res => {
-    //       var arr = res.data.result;
-    //       for (var i = 0; i < arr.length; i++) {
-	// 		this.list.push(arr[i]);
-	// 		// console.log(this.list)
-    //       }
-    //     });
     },
     jumpde(did){
       // console.log(did)
