@@ -116,64 +116,25 @@ server.get("/moe",(req,res)=>{
     
   })
 })
-
-server.get("/clothing",(req,res)=>{
-  var sql = "select * from clothing";
-  pool.query(sql,(err,result)=>{
-    
-    if (err) throw err;
+// 列表页每行的查询
+server.get("/Tree",(req,res)=>{
+  var n=Number(req.query.id);
+  var m=Number( req.query.ids);
+  // select * from list Limit 0,10;
+  var sql = "select * from list LIMIT ?,?";
+  pool.query(sql,[n,m],(err,result)=>{
+    if(err) throw err;
     if(result.length>0){
       res.send({code:1,msg:"发送成功",result})
       return;
     }
     res.send({code:-1,msg:"发送失败"})
-    
   })
 })
 
-
-server.get("/mask",(req,res)=>{
-  var sql = "select * from mask";
-  pool.query(sql,(err,result)=>{
-    
-    if (err) throw err;
-    if(result.length>0){
-      res.send({code:1,msg:"发送成功",result})
-      return;
-    }
-    res.send({code:-1,msg:"发送失败"})
-    
-  })
-})
-server.get("/shoe",(req,res)=>{
-  var sql = "select * from shoe";
-  pool.query(sql,(err,result)=>{
-    
-    if (err) throw err;
-    if(result.length>0){
-      res.send({code:1,msg:"发送成功",result})
-      return;
-    }
-    res.send({code:-1,msg:"发送失败"})
-    
-  })
-})
-server.get("/bag",(req,res)=>{
-  var sql = "select * from bag";
-  pool.query(sql,(err,result)=>{
-    
-    if (err) throw err;
-    if(result.length>0){
-      res.send({code:1,msg:"发送成功",result})
-      return;
-    }
-    res.send({code:-1,msg:"发送失败"})
-    
-  })
-})
 
 server.get("/list",(req,res)=>{
-  var sql = "select * from list";
+  var sql = "select * from list Limit 0,4";
   pool.query(sql,(err,result)=>{
     
     if (err) throw err;
@@ -185,12 +146,27 @@ server.get("/list",(req,res)=>{
     
   })
 })
+// server.get("/lists",(req,res)=>{
+//   var count =Number( req.query.count);
+//   console.log(count)
+//   var sql = "select * from list Limit 0,";
+//   pool.query(sql,count,(err,result)=>{
+    
+//     if (err) throw err;
+//     if(result.length>0){
+//       res.send({code:1,msg:"发送成功",result})
+//       return;
+//     }
+//     res.send({code:-1,msg:"发送失败"})
+    
+//   })
+// })
 
 //接受详情页参数
 server.get("/details",(req,res)=>{
   var lid=req.query.id;
-  console.log(lid)
-  var sql="select * from clothing where id=?";
+  // console.log(lid)
+  var sql="select * from list where id=?";
   // select * from clothing where id=1;
   pool.query(sql,lid,(err,result)=>{
     

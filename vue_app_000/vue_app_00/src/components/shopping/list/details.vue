@@ -31,6 +31,40 @@
           <span style="margin:0">分享</span>
         </div>
       </div>
+      <div>
+        <van-button type="primary" @click="showPopup">请选择款式</van-button>
+        <van-popup v-model="show" round position="bottom" :style="{ height: '50%' }">
+          <div class="smallBox">
+            <div class="smallTop">
+              <img :src="'http://127.0.0.1:3000'+item.img1" alt />
+              <p class="smallPrice">¥{{item.price}}</p>
+            </div>
+            <div class="middleBox">
+              <p class="middleTxt">购买数量</p>
+              <mt-button size="small" @click="jian">-</mt-button>
+              <input v-model="value" />
+              <mt-button size="small" @click="jia">+</mt-button>
+            </div>
+            <div class="smallB">
+              <mt-button size="large">加入购物车</mt-button>
+              <mt-button size="large" type="danger">立即购买</mt-button>
+            </div>
+          </div>
+        </van-popup>
+      </div>
+      <div class="boxBottom">
+        <van-tabs type="card">
+          <van-tab title="图片详情">
+            <img :src="'http://127.0.0.1:3000'+item.img1" alt />
+            <img :src="'http://127.0.0.1:3000'+item.img2" alt />
+            <img :src="'http://127.0.0.1:3000'+item.img3" alt />
+          </van-tab>
+          <van-tab title="评价信息">内容 2</van-tab>
+          <van-tab title="贴心售后">
+            <img src="../../../assets/baoxiu.png" alt="">
+          </van-tab>
+        </van-tabs>
+      </div>
     </div>
   </div>
 </template>
@@ -38,11 +72,23 @@
 export default {
   data() {
     return {
-      list: ""
+      list: "",
+      show: false,
+      value: 1
     };
   },
   props: ["id"],
   methods: {
+    jia() {
+      this.value++;
+    },
+    jian() {
+      if (this.value > 1) {
+        this.value--;
+      } else {
+        this.value = 1;
+      }
+    },
     onClickLeft() {
       this.$router.push("/index");
     },
@@ -54,8 +100,11 @@ export default {
       // console.log(deid)
       this.axios.get("details", { params: { id: deid } }).then(res => {
         var arr = res.data.result;
-          this.list = arr;
+        this.list = arr;
       });
+    },
+    showPopup() {
+      this.show = true;
     }
   },
   mounted() {
@@ -106,5 +155,84 @@ body {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+.van-button {
+  width: 100%;
+  background-color: #fff;
+  border-color: #fff;
+  margin-bottom: 5px;
+}
+.van-button__text {
+  float: left;
+  color: #6e6b6b80;
+}
+.smallBox {
+  width: 100%;
+  height: 100%;
+}
+.smallTop {
+  width: 100%;
+  height: 130px;
+  position: relative;
+  border-bottom: 1px solid #000;
+}
+.smallTop > img {
+  width: 100px;
+  height: 100px;
+  margin: 0 20px;
+  margin-top: 13px;
+}
+.smallPrice {
+  color: #f00;
+  position: absolute;
+  top: 7px;
+  left: 167px;
+}
+.middleBox {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #000;
+  padding: 0 10px;
+}
+.middleBox > p {
+  display: inline-block;
+  margin-right: 50%;
+}
+.middleBox > input {
+  width: 33px;
+  height: 33px;
+  margin: 0 5px;
+  text-align: center;
+}
+.smallB {
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+}
+.boxBottom {
+  width: 100%;
+  box-sizing: border-box;
+  height: 300px;
+  background: #fff;
+  padding: 10px 10px;
+}
+
+.van-tab__pane,
+.van-tab__pane-wrapper {
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 92%;
+  margin: 0 auto;
+}
+.van-tab__pane>img{
+  width: 100%;
+}
+</style>
+<style>
+.van-tab > .van-ellipsis {
+  margin: 0 !important;
 }
 </style>

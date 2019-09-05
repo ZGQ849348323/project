@@ -4,20 +4,26 @@
     <search id="aa"></search>
     <div id="bigBox" :style="{height:(screenHeight-152)+'px'}">
       <ul class="left">
-        <li v-for="(item,i) of listL" :key="i" :data-index="i" @click="isActive(i)" :class="item.isshow?'destTab active':'destTab'">{{item.txt}}</li>
+        <li
+          v-for="(item,i) of listL"
+          :key="i"
+          :data-index="i"
+          @click="isActive(i)"
+          :class="item.isshow?'destTab active':'destTab'"
+        >{{item.txt}}</li>
       </ul>
       <ul class="right" v-show="lists[n].bol" v-for="(item,n) of lists" :key="n">
-        <li v-for="(elem,i) of item.list" :key="i" @click="aa">
+        <li v-for="(elem,i) of item.list" :key="i" @click="aa(elem.id)" >
           <table></table>
           <div class="a">
-            <img :src="'http://127.0.0.1:3000'+elem.imgurl" alt="">
+            <img :src="'http://127.0.0.1:3000'+elem.imgurl" alt />
             <div>
               <span class="title">{{elem.title}}</span>
               <span class="price">¥{{elem.price}}</span>
               <p>赚{{elem.p1}}</p>
             </div>
           </div>
-        </li>       
+        </li>
       </ul>
     </div>
   </div>
@@ -28,19 +34,19 @@ export default {
   data() {
     return {
       value: "",
-      lists:[
-        {bol:true,list:""},
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""}, 
-        {bol:false,list:""},         
+      lists: [
+        { bol: true,  list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" },
+        { bol: false, list: "" }
       ],
       screenHeight: document.documentElement.clientHeight, // 屏幕高度
       listL: [
@@ -56,16 +62,16 @@ export default {
         { txt: "手机数码", isshow: false },
         { txt: "汽车用品", isshow: false },
         { txt: "奢饰品/...", isshow: false }
-      ],
+      ]
     };
   },
   methods: {
     onSearch() {
       console.log(this.value);
     },
-    isActive(i){
-      let dom=i;
-     for (var i = 0; i < this.listL.length; i++) {
+    isActive(i) {
+      let dom = i;
+      for (var i = 0; i < this.listL.length; i++) {
         this.listL[i].isshow = false;
         this.lists[i].bol = false;
         if (dom == i) {
@@ -74,60 +80,96 @@ export default {
         }
       }
     },
-    clothing(){
-			// var id = 3;
-			this.axios
-      // .get("list",{params:{id:id}})
-      .get("clothing")
-			.then(res=>{
-        for(var i=0;i<this.lists.length;i++){          
-          var arr = res.data.result;
-          this.lists[0].list= arr;
-          this.lists[4].list= arr;
-          this.lists[8].list= arr;
-        }
-			})
+    one(){   
+      this.axios.get("Tree", { params: { id: 0 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[0].list=arr;
+      })  
     },
-    mask(){
-      this.axios.get("mask").then(res=>{
-        for(var i=0;i<this.lists.length;i++){         
-          var arr=res.data.result;
-          this.lists[1].list=arr;
-          this.lists[5].list= arr;
-          this.lists[9].list= arr;
-        }
-      })
+    two(){   
+      this.axios.get("Tree", { params: { id: 11 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[1].list=arr;
+      })  
     },
-    shoe(){
-       this.axios.get("shoe").then(res=>{
-         for(var i=0;i<this.lists.length;i++){          
-           var arr=res.data.result;
-           this.lists[2].list=arr;
-           this.lists[6].list= arr;
-           this.lists[10].list= arr;
-        }
-      })
+    three(){
+      this.axios.get("Tree", { params: { id: 21 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[2].list=arr;
+      }) 
     },
-    bag(){
-      this.axios.get("bag").then(res=>{
-        for(var i=0;i<this.lists.length;i++){          
-          var arr=res.data.result;
-          this.lists[3].list=arr;
-          this.lists[7].list= arr;
-          this.lists[11].list= arr;
-        }
-      })
+    four(){
+      this.axios.get("Tree", { params: { id: 31 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[3].list=arr;
+      }) 
     },
-    aa(){
-      this.$router.push("/details")
+    five(){
+      this.axios.get("Tree", { params: { id: 41 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[4].list=arr;
+      }) 
+    },
+    six(){
+      this.axios.get("Tree", { params: { id: 51 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[5].list=arr;
+      }) 
+    },
+    seven(){
+      this.axios.get("Tree", { params: { id: 61 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[6].list=arr;
+      }) 
+    },
+    eight(){
+      this.axios.get("Tree", { params: { id: 71 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[7].list=arr;
+      }) 
+    },
+    nine(){
+      this.axios.get("Tree", { params: { id: 81 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[8].list=arr;
+      }) 
+    },
+    ten(){
+      this.axios.get("Tree", { params: { id: 91 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[9].list=arr;
+      }) 
+    },
+    eleven(){
+      this.axios.get("Tree", { params: { id: 101 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[10].list=arr;
+      }) 
+    },
+    twelve(){
+      this.axios.get("Tree", { params: { id: 111 ,ids:10} }).then(res=>{
+         var arr = res.data.result;
+            this.lists[11].list=arr;
+      }) 
+    },
+    aa(did) {
+      // console.log(did)
+      this.$router.push("/details/"+did);
     },
   },
   created() {
-    this.clothing();
-    this.mask();
-    this.shoe();
-    this.bag();
- 
+    this.one();
+    this.two();
+    this.three();
+    this.four();
+    this.five();
+    this.six();
+    this.seven();
+    this.eight();
+    this.nine();
+    this.ten();
+    this.eleven();
+    this.twelve();
   },
   components: {
     // 顶部搜索栏
@@ -136,11 +178,11 @@ export default {
 };
 </script>
 <style scoped>
-*{
+* {
   box-sizing: border-box;
 }
 #aa {
-	width: 100%;
+  width: 100%;
   position: fixed;
   top: 40px;
   background-color: #e6e6e6 !important;
@@ -166,7 +208,6 @@ export default {
 .right {
   width: 72%;
   overflow: scroll;
-
 }
 .left > li {
   height: 60px;
@@ -176,50 +217,50 @@ export default {
   border-bottom: 1px solid #d1d1d1;
 }
 
-.right>li{
+.right > li {
   height: 120px;
   width: 100%;
   border-bottom: 1px solid #d1d1d1;
 }
-.a{
+.a {
   display: flex;
   height: 100px;
   width: 90%;
   margin: auto;
   margin-top: 17px;
 }
-.title{
-	width: 100%;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	display:-webkit-box;
-	/*控制在3行*/
-	-webkit-line-clamp:2;
-	-webkit-box-orient:vertical;
+.title {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /*控制在3行*/
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
-.a>div>p{
+.a > div > p {
   margin: 0;
   display: inline-block;
 }
-.a>div>.price{
-  margin-top:30px; 
+.a > div > .price {
+  margin-top: 30px;
   font-size: 16px;
   margin-right: 5px;
 }
-.a>div>p{
-  margin-top:30px; 
+.a > div > p {
+  margin-top: 30px;
   color: #f00;
   font-size: 8px;
 }
-.destTab{
+.destTab {
   color: #000;
 }
-.active{
+.active {
   background-color: #d6d6d6;
   color: #f00;
 }
-.a>img{
-  width: 60px ;
+.a > img {
+  width: 60px;
   height: 80px;
 }
 /* .van-search {

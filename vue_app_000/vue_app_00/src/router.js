@@ -9,7 +9,6 @@ import index from "./components/shopping/index.vue"
 import web from "./components/shopping/home/web.vue"
 import TreeSelect from "./components/shopping/list/TreeSelect.vue"
 import details from "./components/shopping/list/details.vue"
-import Sku from "./components/shopping/list/Sku.vue"
 
 Vue.use(Router)
 export default new Router({
@@ -21,6 +20,5 @@ export default new Router({
     {path:"/web",component:web},
     {path:"/TreeSelect",component:TreeSelect},
     {path:"/details/:did",component:details,props:true},
-    {path:"/Sku",component:Sku}
   ]
 })

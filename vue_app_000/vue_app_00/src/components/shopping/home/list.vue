@@ -17,26 +17,41 @@ export default {
   data() {
     return {
       list: "",
+      count:0,
     };
   },
   methods: {
     shoe() {
+      // console.log(this.count)
       this.axios
         .get("list")
         .then(res => {
           var arr = res.data.result;
           this.list = arr;
+          // console.log(this.list.length)
         });
     },
+    // next(){
+    //   this.count=this.count+4;
+
+    //   this.axios.get("lists",{param:{count:this.count}})
+    //   .then(res=>{
+    //     console.log(res)
+    //   })
+    // },
     jumpde(did){
-      // console.log(did)
+      console.log(did)
       this.$router.push("/details/"+did);
     }
   },
 
   created() {
-    this.shoe();
-  }
+    this.shoe()
+    this.shoe()
+    this.shoe()
+
+    
+  },
 };
 </script>
 <style scoped>
