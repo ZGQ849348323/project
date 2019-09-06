@@ -179,3 +179,61 @@ server.get("/details",(req,res)=>{
     
   })
 })
+
+// 接受详情页的参数并且接受查询数据库并插入到shoppingCar购物车中
+  server.get("/car",(req,res)=>{
+    var id=req.query.id;
+    var count=req.query.count;
+    var sql="select * from list where id=?";
+    pool.query(sql,id,(err,result)=>{    
+      if (err) throw err;
+      if(result.length>0){
+        // var sqls="INSERT INTO xz_login VALUES(null,'tom',md5('123'));"
+        for(var i=0;i<result.length;i++){
+          // console.log(result[i].title)
+          var title=result[i].title;
+          var discount=result[i].discount;
+          var imgurl=result[i].img1;
+        }
+        var sqls="INSERT INTO shoppingCar VALUES(null,?,?,?,?)";
+        pool.query(sqls,[count,title,discount,imgurl],(err,result)=>{
+    
+          if (err) throw err;
+          if(result.length>0){
+            res.send({code:1,msg:"发送成功",result})
+            return;
+          }
+          res.send({code:-1,msg:"发送失败"})
+          
+        })
+      }           
+    })
+  })
+
+  // 查询shoppingCar表的数据并显示到页面
+  server.get("/bag",(req,res)=>{
+    var sql="select * from shoppingcar";
+    pool.query(sql,(err,result)=>{
+      if(err) throw err;
+      if(result.length>0){
+        res.send({code:1,msg:"发送成功",result})
+        return;
+      }
+      res.send({code:-1,msg:"发送失败"})
+    })
+  })
+
+  // 获取id完成加减
+  server.get("/jia",(req,res)=>{
+    var count=req.query.count
+    var id=req.query.id;
+    console.log(count)
+    var sqls="UPDATE shoppingCar SET count=? where id=?"
+        pool.query(sqls,[count,id],(err,result)=>{
+            if(err) throw err;
+            if(result.length>0){
+              res.send({code:1,msg:"发送成功",result})
+              return;
+            }
+          })
+      })

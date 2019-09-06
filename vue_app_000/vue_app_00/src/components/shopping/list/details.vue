@@ -46,7 +46,7 @@
               <mt-button size="small" @click="jia">+</mt-button>
             </div>
             <div class="smallB">
-              <mt-button size="large">加入购物车</mt-button>
+              <mt-button size="large" @click="addShopping">加入购物车</mt-button>
               <mt-button size="large" type="danger">立即购买</mt-button>
             </div>
           </div>
@@ -61,9 +61,20 @@
           </van-tab>
           <van-tab title="评价信息">内容 2</van-tab>
           <van-tab title="贴心售后">
-            <img src="../../../assets/baoxiu.png" alt="">
+            <img src="../../../assets/baoxiu.png" alt />
           </van-tab>
         </van-tabs>
+      </div>
+      <div class="bottom">
+          <div class="one" @click="jumpBag">
+            <img src="../../../assets/shoppingCar.png" alt />
+            <p>购物车</p>
+          </div>
+        <div class="one">
+          <img src="../../../assets/service.png" alt />
+          <p>联系客服</p>
+        </div>
+        <mt-button size="large" type="danger" @click="showPopup">立即购买</mt-button>
       </div>
     </div>
   </div>
@@ -74,10 +85,11 @@ export default {
     return {
       list: "",
       show: false,
-      value: 1
+      value: 1,
+      id:"",
     };
   },
-  props: ["id"],
+  // props: ["id"],
   methods: {
     jia() {
       this.value++;
@@ -105,10 +117,20 @@ export default {
     },
     showPopup() {
       this.show = true;
+    },
+    jumpBag(){
+      this.$router.push("/index")
+    },
+    addShopping(){
+      this.axios.get("car",{params:{id:this.id,count:this.value}})
+      .then(res=>{
+          console.log(res)
+      })
     }
   },
   mounted() {
     let deid = this.$route.params.did;
+    this.id = deid;
     this.loadAjax(deid);
   }
 };
@@ -227,8 +249,32 @@ body {
   width: 92%;
   margin: 0 auto;
 }
-.van-tab__pane>img{
+.van-tab__pane > img {
   width: 100%;
+}
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 46px;
+  background: #fff;
+  display: flex;
+}
+.one {
+  width: 80px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.one > img {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
+.one > p {
+  margin: 0;
+  font-size: 12px;
+  margin: 3px auto;
 }
 </style>
 <style>

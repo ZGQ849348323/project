@@ -212,3 +212,19 @@ INSERT INTO list VALUES
 (null,78,2.78,'欧美时尚情侣背包男士女大学生滑板书包韩版潮牌原宿风旅行双肩包',48,'/img/bag2.jpg','/img/clothing3_1.jpg','/img/clothing3_2.jpg','/img/clothing3_3.jpg'),
 (null,129,6.98,'Mr.ace Homme双肩包女学生书包升级版纯色背包酒红色防水电脑包男',98,'/img/bag3.jpg','/img/clothing4_1.jpg','/img/clothing4_2.jpg','/img/clothing4_3.jpg'),
 (null,109,2.58,'mracehomme日本小背包潮时尚大学生ins超火旅游双肩包女韩版书包',58,'/img/bag4.jpg','/img/clothing_1.jpg','/img/clothing_2.jpg','/img/clothing_3.jpg');
+
+
+-- 创建购物车的列表
+-- #完成功能购物车
+-- #id,    购物车项目id
+-- #count  购物车项目数量
+-- #title  商品名称
+-- #discount, INT
+-- imgurl 商品图片
+CREATE TABLE shoppingCar(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+	count INT,
+    title VARCHAR(50),
+    discount INT,
+    imgurl VARCHAR(50)
+);
