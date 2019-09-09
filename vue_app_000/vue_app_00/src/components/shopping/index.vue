@@ -8,7 +8,7 @@
       <mt-tab-container-item id="list">
         <TreeSelect></TreeSelect>
       </mt-tab-container-item>
-      <mt-tab-container-item id="bag">
+      <mt-tab-container-item id="bag" style="background-color:#999999">
         <bag></bag>
       </mt-tab-container-item>
       <mt-tab-container-item id="my">
@@ -121,5 +121,4 @@ export default {
   position: fixed;
   bottom: 0;
 }
-
 </style>
