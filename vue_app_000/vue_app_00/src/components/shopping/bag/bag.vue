@@ -5,11 +5,18 @@
     <table></table>
     <div class="bigBox">
       <div class="list" v-for="(item,i) of list" :key="i">
-        <input type="checkbox" class="checkBox" />
+        <input
+          @change="checkedOne(i)"
+          type="checkbox"
+          class="checkBox"
+          
+          :checked="item.bol"
+        />
         <div class="listList">
           <img :src="'http://127.0.0.1:3000'+item.imgurl" alt />
           <p id="titleList">{{item.title}}</p>
-          <span class="price">{{item.discount}}</span>
+          <span class="price">¥{{item.discount}}</span>
+          <h4 class="gong">共{{Number(item.discount)*Number(item.count)}}元</h4>
           <div class="button">
             <mt-button size="small" @click="jia($event,-1)" :data-index="i">-</mt-button>
             <!-- <input v-text="item.count" disabled /> -->
@@ -19,7 +26,7 @@
         </div>
       </div>
       <div class="box">
-        <van-checkbox v-model="checked">全选</van-checkbox>
+        <van-checkbox v-model="checkedAll" :checked="checkedAll"  @click="chooseAll">全选</van-checkbox>
         <div class="box1">
           <div class="lala">
             <span>¥{{sum}}</span>
@@ -39,14 +46,56 @@ export default {
       value: 1,
       list: "",
       radio: "1",
-      checked: true,
+      checkedAll: false,
       sum: "",
-      countAll: ""
+      countAll: "",
+      // 单个总价
+      subCount: [],
     };
   },
   methods: {
+    // 判断是否全选
+    judge(){
+      var flag=true;
+      for(var item of this.list){
+        if(!item.bol){
+          flag=false;
+        }
+      }
+      if(flag){
+        this.checkedAll=true
+      }else{
+        this.checkedAll=false
+      }
+    },
+    // 单选按钮
+    checkedOne: function(i) {
+      // console.log(i)
+      if (this.list[i].bol == false) {
+        this.list[i].bol = true;
+      } else{
+        this.list[i].bol = false;
+      } 
+      console.log(this.list[i].bol)
+      this.judge()
+    },
+    // 全选按钮
+    chooseAll: function() {
+      console.log(this.checkedAll)
+      if(!this.checkedAll){
+        for(var item of this.list){
+          item.bol=true
+        }
+      }else{
+        for(var item of this.list){
+          item.bol=false
+        }
+      }
+      
+    },
     jia(e, m) {
       var index = e.target.dataset.index;
+
       this.sub();
       if (this.list[index].count > 0) {
         this.list[index].count += m;
@@ -56,29 +105,27 @@ export default {
         this.list[index].count = 1;
       }
       var count = this.list[index].count;
-      // console.log(count);
-      // return
       setTimeout(() => {
         var id = this.list[index].id;
         this.axios
           .get("jia", { params: { id: id, count: count } })
           .then(res => {
-            console.log(res);
             this.select();
           });
       }, 5000);
     },
-    jian() {
-      if (this.value > 1) {
-        this.value--;
-      } else {
-        this.value = 1;
-      }
-    },
     select() {
       this.axios.get("bag").then(res => {
-        this.list = res.data.result;
-        this.sub();
+        if (res.code == -1) {
+          console.log("没有数据");
+        } else {
+          this.list = res.data.result;
+          for (var i = 0; i < this.list.length; i++) {
+            this.list[i].bol = false;
+          }
+          this.sub();
+        }
+        // console.log(this.list)
       });
     },
     sub() {
@@ -97,8 +144,6 @@ export default {
   },
   created() {
     this.select();
-    // setTimeout(() => {
-    // }, 5000);
   }
 };
 </script>
@@ -206,12 +251,12 @@ body {
   position: absolute;
   top: 3px;
 }
-.lala{
+.lala {
   display: flex;
   flex-direction: column;
   position: absolute;
   top: 8px;
-    right: 95px;
+  right: 95px;
 }
 .lala > p {
   font-size: 12px;
@@ -221,6 +266,12 @@ body {
   color: #f00;
   margin: 0;
   margin-bottom: 5px;
-
+}
+.gong {
+  position: absolute;
+  top: 51px;
+  right: 114px;
+  font-size: 16px;
+  color: #f00;
 }
 </style>

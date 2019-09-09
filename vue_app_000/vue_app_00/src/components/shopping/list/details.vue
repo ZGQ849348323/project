@@ -42,7 +42,7 @@
             <div class="middleBox">
               <p class="middleTxt">购买数量</p>
               <mt-button size="small" @click="jian">-</mt-button>
-              <input v-model="value" />
+              <input v-model="value" disabled />
               <mt-button size="small" @click="jia">+</mt-button>
             </div>
             <div class="smallB">

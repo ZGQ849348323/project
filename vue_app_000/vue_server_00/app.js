@@ -237,3 +237,11 @@ server.get("/details",(req,res)=>{
             }
           })
       })
+
+
+
+      // // 修改单选bol值
+      // server.get("/checkedOne",(req,res)=>{
+      //   var bol=req.query.bol;
+      //   console.log(bol)
+      // })

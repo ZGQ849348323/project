@@ -221,8 +221,10 @@ INSERT INTO list VALUES
 -- #title  商品名称
 -- #discount, INT
 -- imgurl 商品图片
+-- bol 0或者1选中商品
 CREATE TABLE shoppingCar(
     id INT PRIMARY KEY AUTO_INCREMENT,
+    -- bol INT,
 	count INT,
     title VARCHAR(50),
     discount INT,
