@@ -1,17 +1,17 @@
 <template>
   <div>
     <mt-header fixed title="购物袋" style="background:#fff;color:#000;" id="top"></mt-header>
-    <van-button type="danger" size="small">编辑</van-button>
+    <van-button
+      type="danger"
+      size="small"
+      @click="show"
+      style="position:fixed;top: 3px;left: 300px;"
+    >编辑</van-button>
+    <!-- <button class="bianji" ></button> -->
     <table></table>
     <div class="bigBox">
       <div class="list" v-for="(item,i) of list" :key="i">
-        <input
-          @change="checkedOne(i)"
-          type="checkbox"
-          class="checkBox"
-          
-          :checked="item.bol"
-        />
+        <input @change="checkedOne(i)" type="checkbox" class="checkBox" :checked="item.bol" />
         <div class="listList">
           <img :src="'http://127.0.0.1:3000'+item.imgurl" alt />
           <p id="titleList">{{item.title}}</p>
@@ -26,8 +26,13 @@
         </div>
       </div>
       <div class="box">
-        <van-checkbox v-model="checkedAll" :checked="checkedAll"  @click="chooseAll">全选</van-checkbox>
-        <div class="box1">
+        <van-checkbox
+          style="margin-left:20px;"
+          v-model="checkedAll"
+          :checked="checkedAll"
+          @click="chooseAll"
+        >全选</van-checkbox>
+        <div class="box1" v-show="boxshow">
           <div class="lala">
             <span>¥{{sum}}</span>
             <p>共{{countAll}}件商品</p>
@@ -35,6 +40,12 @@
 
           <van-button type="danger">去结算</van-button>
         </div>
+        <van-button
+          @click="del"
+          type="danger"
+          style="position: absolute;top: 3px;left: 150px;width: 254px;"
+          v-show="isshow"
+        >删除</van-button>
       </div>
     </div>
   </div>
@@ -43,6 +54,8 @@
 export default {
   data() {
     return {
+      boxshow:true,
+      isshow: false,
       value: 1,
       list: "",
       radio: "1",
@@ -51,21 +64,40 @@ export default {
       countAll: "",
       // 单个总价
       subCount: [],
+      bols: []
     };
   },
   methods: {
-    // 判断是否全选
-    judge(){
-      var flag=true;
-      for(var item of this.list){
-        if(!item.bol){
-          flag=false;
+    del: function() {
+      for (var i = 0; i < this.list.length; i++) {
+        if (this.list[i].bol) {
+          var ids = this.list[i].id;
+          this.axios.get("del", { params: { id: ids } }).then(res => {
+            console.log(res);
+            this.select();
+          });
+        } else {
+          console.log(222);
         }
       }
-      if(flag){
-        this.checkedAll=true
-      }else{
-        this.checkedAll=false
+    },
+    show: function() {
+      this.isshow = !this.isshow;
+      this.boxshow = !this.boxshow;
+
+    },
+    // 判断是否全选
+    judge() {
+      var flag = true;
+      for (var item of this.list) {
+        if (!item.bol) {
+          flag = false;
+        }
+      }
+      if (flag) {
+        this.checkedAll = true;
+      } else {
+        this.checkedAll = false;
       }
     },
     // 单选按钮
@@ -73,25 +105,24 @@ export default {
       // console.log(i)
       if (this.list[i].bol == false) {
         this.list[i].bol = true;
-      } else{
+      } else {
         this.list[i].bol = false;
-      } 
-      console.log(this.list[i].bol)
-      this.judge()
+      }
+      console.log(this.list[i].bol);
+      this.judge();
     },
     // 全选按钮
     chooseAll: function() {
-      console.log(this.checkedAll)
-      if(!this.checkedAll){
-        for(var item of this.list){
-          item.bol=true
+      console.log(this.checkedAll);
+      if (!this.checkedAll) {
+        for (var item of this.list) {
+          item.bol = true;
         }
-      }else{
-        for(var item of this.list){
-          item.bol=false
+      } else {
+        for (var item of this.list) {
+          item.bol = false;
         }
       }
-      
     },
     jia(e, m) {
       var index = e.target.dataset.index;
@@ -118,7 +149,10 @@ export default {
       this.axios.get("bag").then(res => {
         if (res.code == -1) {
           console.log("没有数据");
+          this.boxshow=false;
+          return;
         } else {
+          this.boxshow=true;
           this.list = res.data.result;
           for (var i = 0; i < this.list.length; i++) {
             this.list[i].bol = false;
@@ -237,7 +271,7 @@ body {
   height: 50px;
   background: #fff;
   position: fixed;
-  top: 559px;
+  bottom: 62px;
   border-bottom: 1px solid #afafaf;
   display: flex;
 }
@@ -273,5 +307,11 @@ body {
   right: 114px;
   font-size: 16px;
   color: #f00;
+}
+.show {
+  display: block;
+}
+.none {
+  display: none;
 }
 </style>

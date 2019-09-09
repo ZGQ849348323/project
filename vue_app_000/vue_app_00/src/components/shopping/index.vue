@@ -8,7 +8,7 @@
       <mt-tab-container-item id="list">
         <TreeSelect></TreeSelect>
       </mt-tab-container-item>
-      <mt-tab-container-item id="bag" style="background-color:#999999">
+      <mt-tab-container-item id="bag" style="background-color:#fff">
         <bag></bag>
       </mt-tab-container-item>
       <mt-tab-container-item id="my">

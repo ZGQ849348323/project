@@ -240,8 +240,15 @@ server.get("/details",(req,res)=>{
 
 
 
-      // // 修改单选bol值
-      // server.get("/checkedOne",(req,res)=>{
-      //   var bol=req.query.bol;
-      //   console.log(bol)
-      // })
+   server.get("/del",(req,res)=>{
+     var id=req.query.id;
+     var sql="Delete from shoppingCar where id=?"
+     pool.query(sql,id,(err,result)=>{
+      if(err) throw err;
+      if(result.affectedRows==1){
+        res.send({code:1,msg:"发送成功",result})
+        return;
+      }
+      console.log(result)
+     })
+   })
