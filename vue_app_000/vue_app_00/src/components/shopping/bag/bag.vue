@@ -43,7 +43,7 @@
         <van-button
           @click="del"
           type="danger"
-          style="position: absolute;top: 3px;left: 150px;width: 254px;"
+          style="position: absolute;top: 3px;right: 20x;width: 254px;"
           v-show="isshow"
         >删除</van-button>
       </div>
@@ -113,7 +113,7 @@ export default {
     },
     // 全选按钮
     chooseAll: function() {
-      console.log(this.checkedAll);
+      // console.log(this.checkedAll);
       if (!this.checkedAll) {
         for (var item of this.list) {
           item.bol = true;
@@ -271,7 +271,7 @@ body {
   height: 50px;
   background: #fff;
   position: fixed;
-  bottom: 62px;
+  bottom: 56px;
   border-bottom: 1px solid #afafaf;
   display: flex;
 }

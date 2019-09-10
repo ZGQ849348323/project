@@ -12,7 +12,7 @@
         <bag></bag>
       </mt-tab-container-item>
       <mt-tab-container-item id="my">
-        <span>44</span>
+        <my></my>
       </mt-tab-container-item>
     </mt-tab-container>
 
@@ -54,6 +54,7 @@ import TabBarIcon from "./home/TabBarIcon";
 import web from "../shopping/home/web";
 import TreeSelect from "./list/TreeSelect"
 import bag from "./bag/bag"
+import my from "./my/index"
 export default {
   data() {
     return {
@@ -92,7 +93,9 @@ export default {
     // 列表页面组件
     TreeSelect,TreeSelect,
     // 购物袋组件
-    bag:bag
+    bag:bag,
+    //
+    my:my
   }
 };
 </script>

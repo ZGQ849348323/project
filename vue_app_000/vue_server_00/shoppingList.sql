@@ -230,3 +230,14 @@ CREATE TABLE shoppingCar(
     discount INT,
     imgurl VARCHAR(50)
 );
+
+
+
+
+CREATE TABLE req(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    uname VARCHAR(15),
+    upwd INT,
+    age INT,
+    sex INT
+);

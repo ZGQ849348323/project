@@ -252,3 +252,39 @@ server.get("/details",(req,res)=>{
       console.log(result)
      })
    })
+
+   server.get("/req",(req,res)=>{
+      var uname=req.query.uname;
+      var upwd=req.query.password;
+      var age=req.query.age;
+      var sex=req.query.sex;
+      var sql="INSERT INTO req VALUES(null,?,?,?,?)";
+      pool.query(sql,[uname,upwd,age,sex],(err,result)=>{
+    
+        if (err) throw err;
+        if(result.length>0){
+          res.send({code:1,msg:"发送成功",result})
+          return;
+        }
+        res.send({code:-1,msg:"发送失败"})
+        
+      })
+   })
+
+
+   server.get("/loginShopping",(req,res)=>{
+    var uname=req.query.uname;
+    var upwd=req.query.password;
+    console.log(uname)
+    var sql="select * from req where uname= ? and upwd= ? ";
+    pool.query(sql,[uname,upwd],(err,result)=>{
+      if (err) throw err;
+      if(result.length>0){
+        res.send({code:1,msg:"发送成功",result})
+        console.log(result)
+        return;
+      }
+      res.send({code:-1,msg:"发送失败"})
+      
+    })
+ })
