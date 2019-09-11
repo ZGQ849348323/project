@@ -8,7 +8,7 @@
         </div>
         <div v-else v-for="(item,i) of list" :key="i">
           <van-button type="danger" style="position:absolute;top:17px ;right:27px;" @click="cancel">注销</van-button>          
-          <h3>欢迎{{item.uname}}登录</h3>
+          <h3 style="margin:0px">欢迎{{item.uname}}登录</h3>
         </div>
       </div>
     </div>
