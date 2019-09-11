@@ -52,14 +52,14 @@
 <script>
 import TabBarIcon from "./home/TabBarIcon";
 import web from "../shopping/home/web";
-import TreeSelect from "./list/TreeSelect"
-import bag from "./bag/bag"
-import my from "./my/index"
+import TreeSelect from "./list/TreeSelect";
+import bag from "./bag/bag";
+import my from "./my/index";
 export default {
   data() {
     return {
       //面板中显示子组件id
-      selected: "home",
+      selected: this.$store.getters.getSelected || "home",
       currentIndex: [
         { isSelect: true },
         { isSelect: false },
@@ -91,16 +91,66 @@ export default {
     // 页面组件
     web: web,
     // 列表页面组件
-    TreeSelect,TreeSelect,
+    TreeSelect,
+    TreeSelect,
     // 购物袋组件
-    bag:bag,
+    bag: bag,
     //
-    my:my
+    my: my
+  },
+
+  created() {
+    for (var item of this.currentIndex) {
+      item.isSelect = false;
+    }
+    console.log(this.currentIndex,this.selected)
+    switch (this.selected) {
+      case "home":
+        this.currentIndex[0].isSelect = true;
+        break;
+      case "list":
+        this.currentIndex[1].isSelect = true;
+        break;
+      case "bag":
+        this.currentIndex[2].isSelect = true;
+        break;
+      case "my":
+        this.currentIndex[3].isSelect = true;
+        break;
+    }
   }
+  // computed: {
+  //   currentIndex() {
+  //     let obj = [
+  //       { isSelect: false },
+  //       { isSelect: false },
+  //       { isSelect: false },
+  //       { isSelect: false }
+  //     ];
+  //     switch (this.selected) {
+  //       case "home":
+  //         obj[0].isSelected = true;
+  //         break;
+  //       case "list":
+  //         obj[1].isSelected = true;
+  //         break;
+  //       case "bag":
+  //         obj[2].isSelected = true;
+  //         break;
+  //       case "my":
+  //         obj[3].isSelected = true;
+  //         break;
+  //     }
+  //     return obj;
+  //   }
+  // }
+  // updated() {
+  //   console.log(12)
+  // }
 };
 </script>
 <style  scoped>
-.mint-tab-container{
+.mint-tab-container {
   height: 100%;
 }
 /*最外层父元素Home.vue*/

@@ -19,6 +19,16 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      list: ["新会员", "品牌热卖", "金卡专区", "直通车区", "购虎优选"],
+      list2: ["新品上市", "女神专区", "购虎国际", "家居用品", "零食专区"]
+    };
+  }
+};
+</script>
 <style>
 .yuan {
   width: 58px;
@@ -49,13 +59,3 @@ span {
     margin-left: 12px;
 }
 </style>
-<script>
-export default {
-  data() {
-    return {
-      list: ["新会员", "品牌热卖", "金卡专区", "直通车区", "购虎优选"],
-      list2: ["新品上市", "女神专区", "购虎国际", "家居用品", "零食专区"]
-    };
-  }
-};
-</script>

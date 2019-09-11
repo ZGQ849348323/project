@@ -6,8 +6,9 @@
           <van-button type="danger" style="margin-right:20px;" @click="login">请登录</van-button>
           <van-button type="danger" @click="reg">请注册</van-button>
         </div>
-        <div v-else>
-          <h3>欢迎xxx登录</h3>
+        <div v-else v-for="(item,i) of list" :key="i">
+          <van-button type="danger" style="position:absolute;top:17px ;right:27px;" @click="cancel">注销</van-button>          
+          <h3>欢迎{{item.uname}}登录</h3>
         </div>
       </div>
     </div>
@@ -18,8 +19,10 @@ export default {
   data() {
     return {
       see: true,
-      // 验证是否登入成功
-      aa: "1"
+      list: "",
+      // 登录状态
+      status: "",
+      id:"",
     };
   },
   methods: {
@@ -29,15 +32,37 @@ export default {
     login: function() {
       this.$router.push("/login");
     },
+    select: function() {
+      this.axios.get("selectReq", { params: { status: 1 } }).then(res => {
+        // console.log(res);
+        this.list = res.data.result;
+        for (var item of this.list) {
+          this.status=item.status
+          this.id=item.id
+        }
+            if (this.status == 1) {
+              this.see = false;
+            } else {
+              this.see = true;
+              console.log(222);
+            }
+      });
+    },
+    cancel:function(){
+      this.axios.get("alter", { params: {id:this.id, status: 0 } }).then(res => {
+        }) 
+           this.see = true;
+    },
   },
-  mounted() {
-      
-  },
+  created() {
+    this.select();
+  }
 };
 </script>
 <style scoped>
 .bigbox {
   width: 100%;
+  height: 100%;
 }
 .top {
   width: 100%;

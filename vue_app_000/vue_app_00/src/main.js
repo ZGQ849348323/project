@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import Vuex  from 'vuex';
+
 // 引用第三方组件vant
 import Vant from 'vant';
 import 'vant/lib/index.css';
@@ -31,8 +33,42 @@ Vue.prototype.axios =axios
 
 Vue.config.productionTip = false
 
+// Vuex
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    // count: 0
+    selected:'home'
+  },
+  mutations: {
+    // increment (state) {
+    //   state.count++
+    // }
+  },
+  getters: {
+    getSelected(state) {
+      return state.selected; 
+    }
+  },
+  mutations: {
+    changeSelected (state,val) {
+      state.selected=val
+    }
+  },
+  // getters: {
+  //   doneTodos: state => {
+  //     return state.todos.filter(todo => todo.done)
+  //   }
+  // }
+
+})
+
+// Vue.prototype.store = store;
+
 
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')

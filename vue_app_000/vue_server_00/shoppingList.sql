@@ -237,7 +237,8 @@ CREATE TABLE shoppingCar(
 CREATE TABLE req(
     id INT PRIMARY KEY AUTO_INCREMENT,
     uname VARCHAR(15),
-    upwd INT,
+    upwd varchar(15),
     age INT,
-    sex INT
+    sex INT,
+    status INT
 );

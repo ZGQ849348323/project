@@ -102,7 +102,11 @@ export default {
       }
     },
     onClickLeft() {
-      this.$router.push("/index");
+      this.$store.commit('changeSelected','list')
+      this.$nextTick(()=>{
+        this.$router.push("/index");
+      })
+
     },
     onClickRight() {
       console.log(1);
@@ -119,7 +123,11 @@ export default {
       this.show = true;
     },
     jumpBag(){
-      this.$router.push("/index")
+      // this.$router.push("/index")
+      this.$store.commit('changeSelected','bag')
+      this.$nextTick(()=>{
+        this.$router.push("/index");
+      })
     },
     addShopping(){
       this.axios.get("car",{params:{id:this.id,count:this.value}})

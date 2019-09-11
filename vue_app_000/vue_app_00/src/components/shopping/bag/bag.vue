@@ -57,14 +57,14 @@ export default {
       boxshow:true,
       isshow: false,
       value: 1,
-      list: "",
+      list: [],
       radio: "1",
       checkedAll: false,
       sum: "",
       countAll: "",
       // 单个总价
       subCount: [],
-      bols: []
+      // bols: []
     };
   },
   methods: {
@@ -114,7 +114,9 @@ export default {
     // 全选按钮
     chooseAll: function() {
       // console.log(this.checkedAll);
-      if (!this.checkedAll) {
+      if(this.list==null){
+        return
+      }else if (!this.checkedAll) {
         for (var item of this.list) {
           item.bol = true;
         }
@@ -147,9 +149,10 @@ export default {
     },
     select() {
       this.axios.get("bag").then(res => {
-        if (res.code == -1) {
+        if (res.data.code == -1) {
           console.log("没有数据");
           this.boxshow=false;
+          this.list = null;
           return;
         } else {
           this.boxshow=true;

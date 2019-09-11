@@ -258,8 +258,9 @@ server.get("/details",(req,res)=>{
       var upwd=req.query.password;
       var age=req.query.age;
       var sex=req.query.sex;
-      var sql="INSERT INTO req VALUES(null,?,?,?,?)";
-      pool.query(sql,[uname,upwd,age,sex],(err,result)=>{
+      var status=0;
+      var sql="INSERT INTO req VALUES(null,?,?,?,?,?)";
+      pool.query(sql,[uname,upwd,age,sex,status],(err,result)=>{
     
         if (err) throw err;
         if(result.length>0){
@@ -288,3 +289,50 @@ server.get("/details",(req,res)=>{
       
     })
  })
+
+// 修改登录状态
+//  modification
+ server.get("/modification",(req,res)=>{
+  var id=req.query.id
+  var status=req.query.status;
+  // console.log(id,status)
+  var sqls="UPDATE req SET status=? where id=?"
+      pool.query(sqls,[status,id],(err,result)=>{
+          if(err) throw err;
+          if(result.length>0){
+            res.send({code:1,msg:"修改成功",result})
+            return;
+          }
+        })
+    })
+
+    // 查询登入状态为1的
+    server.get("/selectReq",(req,res)=>{
+      var status=req.query.status
+      // console.log(id,status)
+      var sql="select * from req where status=?";
+          pool.query(sql,[status],(err,result)=>{
+              if(err) throw err;
+              if(result.length>0){
+                res.send({code:1,msg:"查询成功",result})
+                return;
+              }
+            })
+        })
+
+
+        // 修改登录状态
+        // alter
+        server.get("/alter",(req,res)=>{
+          var id=req.query.id
+          var status=req.query.status;
+          // console.log(id,status)
+          var sqls="UPDATE req SET status=? where id=?"
+              pool.query(sqls,[status,id],(err,result)=>{
+                  if(err) throw err;
+                  if(result.length>0){
+                    res.send({code:1,msg:"修改成功",result})
+                    return;
+                  }
+                })
+            })

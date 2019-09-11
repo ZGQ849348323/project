@@ -44,23 +44,28 @@ export default {
         this.$toast({
           message: "年龄不能为空"
         });
-      } 
-      else {
+      } else {
         this.axios
           .get("req", {
             params: { uname: uname, password: password, age: age, sex: sex }
           })
           .then(res => {
-            this.$router.push("/index");
+            this.$store.commit("changeSelected", "my");
+            this.$nextTick(() => {
+              this.$router.push("/index");
+            });
             this.$toast({
-                 message: "注册成功"
-                });
+              message: "注册成功"
+            });
           });
       }
     },
 
     onClickLeft(aa) {
-      this.$router.push("/my");
+      this.$store.commit("changeSelected", "my");
+            this.$nextTick(() => {
+              this.$router.push("/index");
+            });
     }
   }
 };
