@@ -1,57 +1,76 @@
 <template>
-  <div>
-    <van-nav-bar title="登入" left-text="返回" left-arrow @click-left="onClickLeft" />
-    <van-cell-group>
-      <van-field v-model="username" required clearable label="用户名" placeholder="请输入用户名" />
-      <van-field v-model="password" type="password" label="密码" placeholder="请输入密码" required />
-    </van-cell-group>
-    <van-button round type="danger" size="large" style="margin-top:20px" @click="login">登录</van-button>
-  </div>
+    <div class="me-header">
+        <div class="me-head">
+            <mt-header title="会员登录">
+                <router-link to="" slot="left">
+                    <mt-button icon="back"></mt-button>
+                </router-link>
+            </mt-header>
+        </div>
+        <div class="me-body">
+            <div class="me-top">
+                <span>
+                    <img src="../../../assets/login1.png" alt="">
+                    <p>会员登录</p>    
+                </span>
+            </div>
+            <div class="me-bottom-name">
+                <mt-field type="name" name="login_name" id="login_name" placeholder="用户名" v-model="uname">
+                    </mt-field>
+            </div>
+            <div class="me-bottom-pwd">
+                <mt-field type="password" name="login_pwd" id="login_pwd" placeholder="密码" v-model="upwd">
+                    </mt-field>
+            </div>
+            <div class="me-bottom3">
+                <router-link to="/req" class="a1">请先注册</router-link>
+            </div>
+            <div class="me-bottom4">
+                <button @click="login">登录</button>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      username: "",
-      password: "",
-      list: ""
+      list: "",
+      uname:'',
+      upwd:'',
     };
   },
   methods: {
     onClickLeft: function() {
-      this.$store.commit("changeSelected", "my");
+      this.$store.commit("changeSelected", "home");
             this.$nextTick(() => {
               this.$router.push("/index");
             });
     },
-    //  sendMsg(){
-    //          //func: 是父组件指定的传数据绑定的函数，this.msg:子组件给父组件传递的数据
-    //          this.$emit('func',this.msg)
-    //      },
 
     login: function() {
-      var uname = this.username;
-      var password = this.password;
+      var uname = this.uname;
+      var upwd = this.upwd;
       this.axios
-        .get("loginShopping", { params: { uname: uname, password: password } })
+        .get("loginShopping", { params: { uname: uname, password: upwd } })
         .then(res => {
           if (res.data.code == -1) {
             this.$toast({
               message: "账号密码错误请重新登入"
             });
           } else {
-            // console.log(11111)
             var arr = res.data.result;
             this.list = arr;
+            // console.log(this.list)
             for (var item of this.list) {
-              if (this.username == item.uname && this.password == item.upwd) {
+              if (this.uname == item.uname && this.upwd == item.upwd) {
                 this.$toast({
                   message: "登入成功"
                 });
                  this.axios.get("modification",{params:{status:1,id:item.id}}).then(res=>{
                     
                  })
-                this.$store.commit("changeSelected", "my");
+                this.$store.commit("changeSelected", "home");
                 this.$nextTick(() => {
                   this.$router.push("/index");
                 });

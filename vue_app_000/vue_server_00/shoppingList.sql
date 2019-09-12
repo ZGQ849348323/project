@@ -238,7 +238,6 @@ CREATE TABLE req(
     id INT PRIMARY KEY AUTO_INCREMENT,
     uname VARCHAR(15),
     upwd varchar(15),
-    age INT,
-    sex INT,
+    email VARCHAR(15),
     status INT
 );

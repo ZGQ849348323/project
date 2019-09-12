@@ -12,7 +12,7 @@ import details from "./components/shopping/list/details.vue"
 import bag from "./components/shopping/bag/bag.vue"
 import my from "./components/shopping/my/index.vue"
 import login from "./components/shopping/my/login.vue"
-import req from "./components/shopping/my/reg.vue"
+import req from "./components/shopping/my/req.vue"
 
 
 Vue.use(Router)

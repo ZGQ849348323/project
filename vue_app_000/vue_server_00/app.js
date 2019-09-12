@@ -256,11 +256,10 @@ server.get("/details",(req,res)=>{
    server.get("/req",(req,res)=>{
       var uname=req.query.uname;
       var upwd=req.query.password;
-      var age=req.query.age;
-      var sex=req.query.sex;
+      var email=req.query.email;
       var status=0;
-      var sql="INSERT INTO req VALUES(null,?,?,?,?,?)";
-      pool.query(sql,[uname,upwd,age,sex,status],(err,result)=>{
+      var sql="INSERT INTO req VALUES(null,?,?,?,?)";
+      pool.query(sql,[uname,upwd,email,status],(err,result)=>{
     
         if (err) throw err;
         if(result.length>0){
@@ -316,6 +315,8 @@ server.get("/details",(req,res)=>{
               if(result.length>0){
                 res.send({code:1,msg:"查询成功",result})
                 return;
+              }else{
+                res.send({code:-1,msg:"没有登录状态的"})
               }
             })
         })

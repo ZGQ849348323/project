@@ -65,7 +65,9 @@ export default {
         { isSelect: false },
         { isSelect: false },
         { isSelect: false }
-      ]
+      ],
+      // list:"",
+      // status:""
     };
   },
   methods: {
@@ -83,7 +85,26 @@ export default {
           this.currentIndex[i].isSelect = false;
         }
       }
-    }
+    },
+    select: function() {
+      this.axios.get("selectReq", { params: { status: 1 } }).then(res => {
+        console.log(res)
+        if(res.data.code=1){
+          this.list=res.data.result;
+          for(var item of this.list){
+            this.status=item.status;
+          }
+        }else{
+          return;
+        }
+        if(this.status==1){
+          this.see=true;
+        }else{
+          this.see=false;
+        }
+        
+      });
+    },
   },
   components: {
     // 底部tarbar组件
@@ -96,7 +117,7 @@ export default {
     // 购物袋组件
     bag: bag,
     //
-    my: my
+    my: my,
   },
 
   created() {
@@ -118,34 +139,11 @@ export default {
         this.currentIndex[3].isSelect = true;
         break;
     }
-  }
-  // computed: {
-  //   currentIndex() {
-  //     let obj = [
-  //       { isSelect: false },
-  //       { isSelect: false },
-  //       { isSelect: false },
-  //       { isSelect: false }
-  //     ];
-  //     switch (this.selected) {
-  //       case "home":
-  //         obj[0].isSelected = true;
-  //         break;
-  //       case "list":
-  //         obj[1].isSelected = true;
-  //         break;
-  //       case "bag":
-  //         obj[2].isSelected = true;
-  //         break;
-  //       case "my":
-  //         obj[3].isSelected = true;
-  //         break;
-  //     }
-  //     return obj;
-  //   }
-  // }
+    this.select();
+
+  },
   // updated() {
-  //   console.log(12)
+
   // }
 };
 </script>
