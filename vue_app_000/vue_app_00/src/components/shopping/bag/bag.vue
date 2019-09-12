@@ -132,11 +132,21 @@ export default {
       this.sub();
       if (this.list[index].count > 0) {
         this.list[index].count += m;
-      } else {
+      }else if(this.list[index].count==0){
+        console.log(222)
+        this.axios.get("del",{params:{id:this.list[index].id}})
+        .then(res=>{
+          console.log(res)
+          if(res.data.code==-1){
+            return false;
+          }
+          this.select();
+        })
         /////////////////////////////////////////////////////////////////////////////////////////////
         // 此处有bug需要调整
         this.list[index].count = 1;
       }
+      console.log(123)
       var count = this.list[index].count;
       setTimeout(() => {
         var id = this.list[index].id;
