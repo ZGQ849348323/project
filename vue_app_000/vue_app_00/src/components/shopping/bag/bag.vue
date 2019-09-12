@@ -54,7 +54,7 @@
 export default {
   data() {
     return {
-      boxshow:true,
+      boxshow: true,
       isshow: false,
       value: 1,
       list: [],
@@ -64,6 +64,7 @@ export default {
       countAll: "",
       // 单个总价
       subCount: [],
+      uid:"",
       // bols: []
     };
   },
@@ -84,7 +85,6 @@ export default {
     show: function() {
       this.isshow = !this.isshow;
       this.boxshow = !this.boxshow;
-
     },
     // 判断是否全选
     judge() {
@@ -114,9 +114,9 @@ export default {
     // 全选按钮
     chooseAll: function() {
       // console.log(this.checkedAll);
-      if(this.list==null){
-        return
-      }else if (!this.checkedAll) {
+      if (this.list == null) {
+        return;
+      } else if (!this.checkedAll) {
         for (var item of this.list) {
           item.bol = true;
         }
@@ -148,21 +148,35 @@ export default {
       }, 5000);
     },
     select() {
-      this.axios.get("bag").then(res => {
-        if (res.data.code == -1) {
-          console.log("没有数据");
-          this.boxshow=false;
-          this.list = null;
+      this.axios.get("selectReq", { params: { status: 1 } }).then(res => {
+        if(res.data.code==-1){
+            this.list = null;
+
           return;
-        } else {
-          this.boxshow=true;
-          this.list = res.data.result;
-          for (var i = 0; i < this.list.length; i++) {
-            this.list[i].bol = false;
-          }
-          this.sub();
+        }else{
+            this.list = res.data.result;
+          console.log(this.list);
+          for (var item of this.list) {
+            this.uid = item.id;
         }
-        // console.log(this.list)
+        this.axios.get("bag",{params:{uid:this.uid}}).then(res => {
+          if (res.data.code == -1) {
+            console.log("没有数据");
+            this.boxshow = false;
+            this.list = null;
+            return;
+          } else {
+            this.boxshow = true;
+            this.list = res.data.result;
+            for (var i = 0; i < this.list.length; i++) {
+              this.list[i].bol = false;
+            }
+            this.sub();
+          }
+          // console.log(this.list)
+        });
+        }
+        
       });
     },
     sub() {

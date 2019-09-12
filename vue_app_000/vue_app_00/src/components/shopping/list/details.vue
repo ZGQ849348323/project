@@ -87,6 +87,7 @@ export default {
       show: false,
       value: 1,
       id:"",
+      uid:"",
     };
   },
   // props: ["id"],
@@ -130,10 +131,31 @@ export default {
       })
     },
     addShopping(){
-      this.axios.get("car",{params:{id:this.id,count:this.value}})
-      .then(res=>{
-          console.log(res)
-      })
+        this.axios.get("selectReq", { params: { status: 1 } }).then(res => {
+        if(res.data.code==-1){
+          this.$toast({
+              message: "请先登录在加入购物车"
+            });
+        }else{
+          this.loadAjax(this.id);
+          this.list = res.data.result;
+          console.log(this.list);
+          for (var item of this.list) {
+            this.uid = item.id;
+          }
+            this.axios.get("car",{params:{id:this.id,count:this.value,uid:this.uid}})
+          .then(res=>{
+              console.log(res)
+          })
+        }
+        
+      });
+
+
+
+
+
+      
     }
   },
   mounted() {

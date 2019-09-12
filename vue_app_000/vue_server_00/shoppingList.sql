@@ -228,7 +228,8 @@ CREATE TABLE shoppingCar(
 	count INT,
     title VARCHAR(50),
     discount INT,
-    imgurl VARCHAR(50)
+    imgurl VARCHAR(50),
+    uid INT
 );
 
 

@@ -2,7 +2,7 @@
     <div class="me-header">
         <div class="me-head">
             <mt-header title="会员登录">
-                <router-link to="" slot="left">
+                <router-link to="/index" slot="left">
                     <mt-button icon="back"></mt-button>
                 </router-link>
             </mt-header>

@@ -90,11 +90,11 @@
         </router-link>
       </div>
     </div>
-    <!-- <div class="b_end">
-      <div class="me_end" >
+    <div class="b_end">
+      <div class="me_end" @click="cancel">
         <router-link to="/login">退出</router-link>
       </div>
-    </div> -->
+    </div>
   
   </div>
 </template>
@@ -119,7 +119,7 @@ export default {
     },
     select: function() {
       this.axios.get("selectReq", { params: { status: 1 } }).then(res => {
-        console.log(res);
+        // console.log(res);
         if (res.data.code == -1) {
           console.log("没有登录状态");
         } else {
@@ -135,19 +135,27 @@ export default {
       });
     },
     cancel() {
-      this.axios
-        .get("alter", { params: { id: this.id, status: 0 } })
-        .then(res => {
-          this.list = null;
-        });
-    //   this.$store.commit("changeSelected", "login");
-    //   this.$nextTick(() => {
-    //     this.$router.push("/login");
-    //   });
-    }
+      if(this.list==""){
+          console.log(123)
+        return;
+      }else{
+        this.axios.get("alter", { params: { id: this.id, status: 0 } }) .then(res => {
+            console.log(res)
+        })
+          console.log(222)
+      }
+      // this.$store.commit("changeSelected", "login");
+      // this.$nextTick(() => {
+      //       this.$router.push("/login");
+      // })
+     }
   },
   created() {
     this.select();
+    // setInterval(()=>{
+
+    //   this.cancel()
+    // },5000)
   }
 };
 </script>

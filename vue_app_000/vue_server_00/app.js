@@ -184,6 +184,7 @@ server.get("/details",(req,res)=>{
   server.get("/car",(req,res)=>{
     var id=req.query.id;
     var count=req.query.count;
+    var uid=req.query.uid;
     var sql="select * from list where id=?";
     pool.query(sql,id,(err,result)=>{    
       if (err) throw err;
@@ -195,8 +196,8 @@ server.get("/details",(req,res)=>{
           var discount=result[i].discount;
           var imgurl=result[i].img1;
         }
-        var sqls="INSERT INTO shoppingCar VALUES(null,?,?,?,?)";
-        pool.query(sqls,[count,title,discount,imgurl],(err,result)=>{
+        var sqls="INSERT INTO shoppingCar VALUES(null,?,?,?,?,?)";
+        pool.query(sqls,[count,title,discount,imgurl,uid],(err,result)=>{
     
           if (err) throw err;
           if(result.length>0){
@@ -212,8 +213,10 @@ server.get("/details",(req,res)=>{
 
   // 查询shoppingCar表的数据并显示到页面
   server.get("/bag",(req,res)=>{
-    var sql="select * from shoppingcar";
-    pool.query(sql,(err,result)=>{
+    var uid=req.query.uid;
+    // console.log(uid)
+    var sql="select * from shoppingcar where uid= ?";
+    pool.query(sql,uid,(err,result)=>{
       if(err) throw err;
       if(result.length>0){
         res.send({code:1,msg:"发送成功",result})
