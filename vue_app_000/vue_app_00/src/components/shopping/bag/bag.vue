@@ -156,6 +156,7 @@ export default {
             this.select();
           });
       }, 5000);
+      /////////////////////////////////////////////////////////////////////////////////////////////
     },
     select() {
       this.axios.get("selectReq", { params: { status: 1 } }).then(res => {
